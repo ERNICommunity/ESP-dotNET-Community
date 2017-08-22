@@ -23,13 +23,14 @@ namespace Ernist.Core.UnitTests
         }
 
         [TestMethod]
-        public void RegisterWithModuleInAssemblyShouldRegisterIFoo()
+        public void RegisterWithModuleShouldRegisterIFoo()
         {
             LightInject.LightInjectContainer container = new LightInject.LightInjectContainer();
 
-            container.Register(this.GetType().Assembly);
+            container.Register(new FooModule());
 
             container.CanGetInstance<IFoo>(string.Empty).Should().BeTrue();
+            container.CanGetInstance<IBar>(string.Empty).Should().BeFalse();
         }
 
         [TestMethod]
