@@ -1,47 +1,52 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 using FluentAssertions;
+using System.Reflection;
+using Xunit;
 
 namespace Ernist.Core.UnitTests
 {
-    [TestClass]
     public class InjectionTests
     {
-        [TestMethod]
+        // Testee.
+        private LightInject.LightInjectContainer _container;
+
+        public InjectionTests()
+        {
+            _container = new LightInject.LightInjectContainer();
+        }
+
+        [Fact]
         public void RegisterInterfaceShouldBeRegistered()
         {
-            LightInject.LightInjectContainer container = new LightInject.LightInjectContainer();
+            // Arrange.
+            // Act.
+            _container.Register<IFoo, Foo>();
 
-            container.Register<IFoo, Foo>();
-
-            container.CanGetInstance<IFoo>(string.Empty).Should().BeTrue();
+            // Assert.
+            _container.CanGetInstance<IFoo>(string.Empty).Should().BeTrue();
         }
 
-        [TestMethod]
-        public void RegisterWithModuleShouldRegisterIFoo()
+        [Fact]
+        public void RegisterWithModuleInAssemblyShouldRegisterIFoo()
         {
-            LightInject.LightInjectContainer container = new LightInject.LightInjectContainer();
+            // Arrange.
+            // Act.
+            _container.Register(this.GetType().GetTypeInfo().Assembly);
 
-            container.Register(new FooModule());
-
-            container.CanGetInstance<IFoo>(string.Empty).Should().BeTrue();
-            container.CanGetInstance<IBar>(string.Empty).Should().BeFalse();
+            // Assert.
+            _container.CanGetInstance<IFoo>(string.Empty).Should().BeTrue();
+            _container.CanGetInstance<IBar>(string.Empty).Should().BeFalse();
         }
 
-        [TestMethod]
+        [Fact]
         public void RegisterWithModulesInAssemblyShouldRegisterAllInterfaces()
         {
-            LightInject.LightInjectContainer container = new LightInject.LightInjectContainer();
+            // Arrange.
+            // Act.
+            _container.Register(this.GetType().GetTypeInfo().Assembly);
 
-            container.Register(this.GetType().Assembly);
-
-            container.CanGetInstance<IFoo>(string.Empty).Should().BeTrue("IFoo was not registered");
-            container.CanGetInstance<IBar>(string.Empty).Should().BeTrue("IBar was not registered");
+            // Assert.
+            _container.CanGetInstance<IFoo>(string.Empty).Should().BeTrue("IFoo was not registered");
+            _container.CanGetInstance<IBar>(string.Empty).Should().BeTrue("IBar was not registered");
         }
     }
 }

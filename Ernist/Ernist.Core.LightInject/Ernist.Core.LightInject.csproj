@@ -37,18 +37,21 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="LightInject, Version=5.0.3.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\LightInject.5.0.3\lib\portable-net45+netcore45+wpa81\LightInject.dll</HintPath>
-    </Reference>
+    <ProjectReference Include="..\Ernist.Core\Ernist.Core.csproj">
+      <Project>{bd08a0bf-917e-494b-8714-b5a15b63d702}</Project>
+      <Name>Ernist.Core</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Ernist.Core\Ernist.Core.csproj">
-      <Project>{bd08a0bf-917e-494b-8714-b5a15b63d702}</Project>
-      <Name>Ernist.Core</Name>
-    </ProjectReference>
+    <Reference Include="LightInject, Version=5.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\LightInject.5.1.0\lib\netstandard1.1\LightInject.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.InteropServices.RuntimeInformation, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.InteropServices.RuntimeInformation.4.3.0\lib\netstandard1.1\System.Runtime.InteropServices.RuntimeInformation.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
 </Project>
