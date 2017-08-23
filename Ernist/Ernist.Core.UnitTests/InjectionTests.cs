@@ -30,7 +30,7 @@ namespace Ernist.Core.UnitTests
         {
             // Arrange.
             // Act.
-            _container.Register(this.GetType().GetTypeInfo().Assembly);
+            _container.Register(new FooModule());
 
             // Assert.
             _container.CanGetInstance<IFoo>(string.Empty).Should().BeTrue();
