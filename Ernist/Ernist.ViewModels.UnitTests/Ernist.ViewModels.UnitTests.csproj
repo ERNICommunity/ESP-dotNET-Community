@@ -14,7 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Ernist.Core.LightInject\Ernist.Core.LightInject.csproj" />
+    <ProjectReference Include="..\Ernist.ViewModels\Ernist.ViewModels.csproj" />
   </ItemGroup>
 
 </Project>
