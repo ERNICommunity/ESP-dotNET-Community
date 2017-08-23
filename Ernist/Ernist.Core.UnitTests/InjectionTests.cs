@@ -34,6 +34,7 @@ namespace Ernist.Core.UnitTests
 
             // Assert.
             _container.CanGetInstance<IFoo>(string.Empty).Should().BeTrue();
+            _container.CanGetInstance<IBar>(string.Empty).Should().BeFalse();
         }
 
         [Fact]
