@@ -3,13 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Xamarin.Forms;
 
-namespace Ernist
+using Xamarin.Forms;
+using Xamarin.Forms.Xaml;
+
+namespace Ernist.Views
 {
-    public partial class MainPage : ContentPage
+    [XamlCompilation(XamlCompilationOptions.Compile)]
+    public partial class ProjectListView : ContentPage
     {
-        public MainPage()
+        public ProjectListView()
         {
             InitializeComponent();
         }
