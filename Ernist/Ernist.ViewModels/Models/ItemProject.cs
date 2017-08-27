@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Ernist.ViewModels.Models
+﻿namespace Ernist.ViewModels.Models
 {
     /// <summary>
     /// An Item of the project.

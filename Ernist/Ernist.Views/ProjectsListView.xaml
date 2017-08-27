@@ -8,7 +8,11 @@
     </ContentPage.Padding>
 
     <StackLayout>
+        <Label Text="Example 1" FontSize="40" />
         <projectview:ProjectView />
         <projectview:ProjectView />
+
+        <Label Text="Example 2" FontSize="40" />
+        <projectview:ProjectsView />
     </StackLayout>
 </ContentPage>

@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:projectsvm="clr-namespace:Ernist.ViewModels;assembly=Ernist.ViewModels"
+             x:Class="Ernist.Views.CustomViews.ProjectsView">
+    
+    <ListView ItemsSource="{Binding ObservableCollectionProject}" IsGroupingEnabled="True" GroupDisplayBinding="{Binding ProjectTitle}">
+        <ListView.BindingContext>
+            <projectsvm:ProjectViewModel />
+        </ListView.BindingContext>
+
+        <ListView.ItemTemplate>
+            <DataTemplate>
+                <ViewCell>
+                    <ContentView>
+                        <Label Text="{Binding ItemTitle}" />
+                    </ContentView>
+                </ViewCell>
+            </DataTemplate>
+        </ListView.ItemTemplate>
+    </ListView>
+</ContentView>

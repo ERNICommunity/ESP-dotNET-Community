@@ -10,7 +10,7 @@ namespace Ernist.ViewModels
     /// <seealso cref="Ernist.ViewModels.Base.ViewModelBase" />
     public class ProjectViewModel : ViewModelBase
     {
-        private ObservableCollection<ItemProject> _observableCollectionItemProject;
+        private ObservableCollection<Project> _observableCollectionProject;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ProjectViewModel"/> class.
@@ -18,19 +18,35 @@ namespace Ernist.ViewModels
         public ProjectViewModel()
         {
             // TODO - Projects DataAccess to create the list.
-            _observableCollectionItemProject = new ObservableCollection<ItemProject>
+            _observableCollectionProject = new ObservableCollection<Project>
             {
-                new ItemProject { ItemTitle = "Skelleton" },
-                new ItemProject { ItemTitle = "Horse" },
-                new ItemProject { ItemTitle = "DeathLord" },
-                new ItemProject { ItemTitle = "Zombie" }
+                new Project("Death Batallion")
+                {
+                    new ItemProject { ItemTitle = "Skeleton" },
+                    new ItemProject { ItemTitle = "Zombie" },
+                    new ItemProject { ItemTitle = "Neferata" },
+                    new ItemProject { ItemTitle = "Nagash" }
+                },
+                new Project("Stormcast")
+                {
+                    new ItemProject { ItemTitle = "Stormcast 1" },
+                    new ItemProject { ItemTitle = "Stormcast 2" },
+                    new ItemProject { ItemTitle = "Stormcast 3" },
+                    new ItemProject { ItemTitle = "Stormcast 4" }
+                }
             };
         }
 
-        public ObservableCollection<ItemProject> ObservableCollectionItemProject
+        /// <summary>
+        /// Gets or sets the observable collection item project.
+        /// </summary>
+        /// <value>
+        /// The observable collection item project.
+        /// </value>
+        public ObservableCollection<Project> ObservableCollectionProject
         {
-            get { return _observableCollectionItemProject; }
-            set { SetProperty(ref _observableCollectionItemProject, value); }
+            get { return _observableCollectionProject; }
+            set { SetProperty(ref _observableCollectionProject, value); }
         }
     }
 }

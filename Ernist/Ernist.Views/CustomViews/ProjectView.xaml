@@ -13,8 +13,8 @@
         </Grid.ColumnDefinitions>
 
         <Label Text="Death Rattle" Grid.Row="0" Grid.Column="0"/>
-        <ListView ItemsSource="{Binding ObservableCollectionItemProject}" RowHeight="240" VerticalOptions="CenterAndExpand" HeightRequest="240" 
-                  WidthRequest="240" SeparatorVisibility="Default" Rotation="270" HorizontalOptions="CenterAndExpand" Grid.Row="1" Grid.Column="0">
+        <ListView ItemsSource="{Binding ObservableCollectionProject}" IsGroupingEnabled="True" GroupDisplayBinding="{Binding ProjectTitle}" RowHeight="150" VerticalOptions="CenterAndExpand"
+                  HeightRequest="150" WidthRequest="150" SeparatorVisibility="Default" Rotation="270" HorizontalOptions="CenterAndExpand" Grid.Row="1" Grid.Column="0">
             <ListView.BindingContext>
                 <projectsvm:ProjectViewModel />
             </ListView.BindingContext>
