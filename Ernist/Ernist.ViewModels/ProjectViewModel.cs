@@ -1,6 +1,8 @@
 ﻿using Ernist.ViewModels.Base;
 using Ernist.ViewModels.Models;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
 
 namespace Ernist.ViewModels
 {
@@ -8,9 +10,9 @@ namespace Ernist.ViewModels
     /// View model of Projects
     /// </summary>
     /// <seealso cref="Ernist.ViewModels.Base.ViewModelBase" />
-    public class ProjectViewModel : ViewModelBase
+    public class ProjectViewModel : ViewModelBase, IProjectViewModel
     {
-        private ObservableCollection<Project> _observableCollectionProject;
+        private ObservableCollection<Project> projects;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ProjectViewModel"/> class.
@@ -18,8 +20,8 @@ namespace Ernist.ViewModels
         public ProjectViewModel()
         {
             // TODO - Projects DataAccess to create the list.
-            _observableCollectionProject = new ObservableCollection<Project>
-            {
+           projects = new ObservableCollection<Project>
+           {
                 new Project("Death Batallion")
                 {
                     new ItemProject { ItemTitle = "Skeleton" },
@@ -27,14 +29,15 @@ namespace Ernist.ViewModels
                     new ItemProject { ItemTitle = "Neferata" },
                     new ItemProject { ItemTitle = "Nagash" }
                 },
-                new Project("Stormcast")
+                new Project("Kharadron Overlords")
                 {
-                    new ItemProject { ItemTitle = "Stormcast 1" },
-                    new ItemProject { ItemTitle = "Stormcast 2" },
-                    new ItemProject { ItemTitle = "Stormcast 3" },
-                    new ItemProject { ItemTitle = "Stormcast 4" }
+                    new ItemProject { ItemTitle = "Admiral" },
+                    new ItemProject { ItemTitle = "Frigate" },
+                    new ItemProject { ItemTitle = "Gunhauler" },
+                    new ItemProject { ItemTitle = "Arkanout Company" },
+                    new ItemProject { ItemTitle = "Skywardens" }
                 }
-            };
+           };
         }
 
         /// <summary>
@@ -43,10 +46,10 @@ namespace Ernist.ViewModels
         /// <value>
         /// The observable collection item project.
         /// </value>
-        public ObservableCollection<Project> ObservableCollectionProject
+        public ObservableCollection<Project> Projects
         {
-            get { return _observableCollectionProject; }
-            set { SetProperty(ref _observableCollectionProject, value); }
+            get { return projects; }
+            set { SetProperty(ref projects, value); }
         }
     }
 }

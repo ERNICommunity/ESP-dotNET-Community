@@ -2,17 +2,43 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:projectview="clr-namespace:Ernist.Views.CustomViews"
+             xmlns:fv="clr-namespace:DLToolkit.Forms.Controls;assembly=DLToolkit.Forms.Controls.FlowListView"
+             xmlns:cv="clr-namespace:Ernist.Views.Controls"
+             xmlns:vm="clr-namespace:Ernist.ViewModels;assembly=Ernist.ViewModels"
              x:Class="Ernist.Views.ProjectListView">
     <ContentPage.Padding>
         <OnPlatform x:TypeArguments="Thickness" iOS="0, 20, 0, 0" />
     </ContentPage.Padding>
 
+    <ContentPage.BindingContext>
+        <vm:ProjectViewModel />
+    </ContentPage.BindingContext>
+
     <StackLayout>
-        <Label Text="Example 1" FontSize="40" />
+        <!--<Label Text="Example 1" FontSize="40" />
         <projectview:ProjectView />
         <projectview:ProjectView />
 
         <Label Text="Example 2" FontSize="40" />
-        <projectview:ProjectsView />
+        <projectview:ProjectsView />-->
+        <fv:FlowListView x:Name="flowListView" FlowColumnCount="3" SeparatorColor="Transparent" SeparatorVisibility="Default" RowHeight="100"
+                         FlowUseAbsoluteLayoutInternally="False" FlowColumnExpand="None"
+                         IsGroupingEnabled="True" FlowGroupDisplayBinding="{Binding ProjectTitle}" FlowGroupShortNameBinding="{Binding ProjectTitle}" 
+                         FlowItemsSource="{Binding Projects}">
+
+            <fv:FlowListView.HeaderTemplate>
+                <DataTemplate>
+                    <Label Text="{Binding .}" FontSize="Large"  FontAttributes="Bold" />
+                </DataTemplate>
+            </fv:FlowListView.HeaderTemplate>
+            <fv:FlowListView.FlowColumnTemplate>
+                <DataTemplate>
+                    <cv:CardView Margin="5">
+                        <Label Text="{Binding ItemTitle}" />
+                    </cv:CardView>
+                </DataTemplate>
+            </fv:FlowListView.FlowColumnTemplate>
+
+        </fv:FlowListView>
     </StackLayout>
 </ContentPage>
