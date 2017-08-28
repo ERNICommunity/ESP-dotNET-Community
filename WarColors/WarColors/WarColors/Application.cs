@@ -19,11 +19,11 @@ namespace WarColors
             this.container = container;
 
             container
-                .PerRequest<HelloViewModel>();
+                .PerRequest<ProjectListViewModel>();
 
             Initialize();
 
-            DisplayRootViewFor<HelloViewModel>();
+            DisplayRootViewFor<ProjectListViewModel>();
         }
 
         protected override void PrepareViewFirst(NavigationPage navigationPage)

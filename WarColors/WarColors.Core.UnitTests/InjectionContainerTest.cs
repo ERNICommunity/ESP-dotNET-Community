@@ -142,16 +142,16 @@ namespace WarColors.Core.UnitTests
             var container = new SimpleInjectionContainer();
 
             // Act.
-            container.RegisterHandler(typeof(IFoo), c => new Foo("Diego"));
+            container.RegisterHandler(typeof(IFoo), c => new Foo("Testee 1"));
 
             // Assert.
             var testee = container.GetInstance<IFoo>();
 
-            System.Threading.Thread.Sleep(50);
+            System.Threading.Thread.Sleep(10);
 
             var testee2 = container.GetInstance<IFoo>();
 
-            testee.Name.Should().Be("Diego", "Testee name should be Diego");
+            testee.Name.Should().Be("Testee 1", "Testee name should be Testee 1");
             testee2.Time.Should().BeMoreThan(TimeSpan.FromTicks(testee2.Time.Ticks));
         }
     }
