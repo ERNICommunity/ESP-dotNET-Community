@@ -12,7 +12,7 @@ namespace WarColors.Core.UnitTests
     /// </summary>
     public class InjectionContainerTest
     {
-        [Fact]
+        [Fact (DisplayName = "Injection container registers a new object and gets the instance")]
         public void InjectionContainerRegisterNewObjectGetInstance()
         {
             // Arrange.
@@ -27,7 +27,7 @@ namespace WarColors.Core.UnitTests
             testee.Name.Should().Be("Juan");
         }
 
-        [Fact]
+        [Fact (DisplayName = "Injection container register a new object and gets the instance using typeof")]
         public void InjectionContainerRegisterNewObjectGetInstanceTypeOf()
         {
             // Arrange.
@@ -42,7 +42,7 @@ namespace WarColors.Core.UnitTests
             testee.Name.Should().Be("Testee");
         }
 
-        [Fact]
+        [Fact (DisplayName = "Injection container register a new class and gets the instance")]
         public void InjectionContainerRegisterClassGetInstance()
         {
             // Arrange.
@@ -56,7 +56,7 @@ namespace WarColors.Core.UnitTests
             testee.Should().NotBeNull();
         }
 
-        [Fact]
+        [Fact (DisplayName = "Injection container register a new classes and gets the instance")]
         public void InjectionContainerRegisterClassGetAllInstances()
         {
             // Arrange.
@@ -73,7 +73,7 @@ namespace WarColors.Core.UnitTests
             testee.Count().Should().Be(2);
         }
 
-        [Fact]
+        [Fact (DisplayName = "Injection container register a new classes and gets the instance using typeof")]
         public void InjectionContainerRegisterClassGetAllInstancesTypeOf()
         {
             // Arrange.
@@ -90,7 +90,7 @@ namespace WarColors.Core.UnitTests
             testee.Count().Should().Be(2);
         }
 
-        [Fact]
+        [Fact (DisplayName = "Injection container register a new classes and gets the instance using key")]
         public void InjectionContainerRegisterGetInstanceKey()
         {
             // Arrange.
@@ -107,7 +107,7 @@ namespace WarColors.Core.UnitTests
             testee2.Name.Should().Be("Testee 2");
         }
 
-        [Fact]
+        [Fact (DisplayName = "Injection container register a new class and check that is registered")]
         public void InjectionContainerRegisterIsRegistered()
         {
             // Arrange.
@@ -120,7 +120,7 @@ namespace WarColors.Core.UnitTests
             container.IsRegistered<IFoo>().Should().BeTrue();
         }
 
-        [Fact]
+        [Fact (DisplayName = "Injection container register a new classes and check that are registered")]
         public void InjectionContainerRegisterIsRegisteredKey()
         {
             // Arrange.
@@ -135,7 +135,7 @@ namespace WarColors.Core.UnitTests
             container.IsRegistered(typeof(IFoo), "Testee 2");
         }
 
-        [Fact]
+        [Fact (DisplayName = "Injection container register a new class using register handler")]
         public void InjectionContainerRegisterHandlerGetInstance()
         {
             // Arrange.
