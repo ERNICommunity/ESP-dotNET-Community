@@ -7,7 +7,7 @@ namespace Ernist.ViewModels.Base
     /// The View Model Base.
     /// </summary>
     /// <seealso cref="System.ComponentModel.INotifyPropertyChanged" />
-    public class ViewModelBase : INotifyPropertyChanged
+    public class ViewModelBase : INotifyPropertyChanged, IViewModel
     {
         /// <summary>
         /// Occurs when a property value changes.

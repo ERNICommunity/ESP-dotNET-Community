@@ -33,9 +33,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ernist.Core.LightInject", "
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "91. UnitTests", "91. UnitTests", "{402F541E-4394-4E9D-B155-BDF63C26084E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ernist.ViewModels.UnitTests", "Ernist.ViewModels.UnitTests\Ernist.ViewModels.UnitTests.csproj", "{DB162E3F-1603-4588-9771-AAF82CBB8D7D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ernist.ViewModels.UnitTests", "Ernist.ViewModels.UnitTests\Ernist.ViewModels.UnitTests.csproj", "{DB162E3F-1603-4588-9771-AAF82CBB8D7D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ernist.Core.UnitTests", "Ernist.Core.UnitTests\Ernist.Core.UnitTests.csproj", "{80790150-6D1A-447F-8F59-99E34938225F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ernist.Core.UnitTests", "Ernist.Core.UnitTests\Ernist.Core.UnitTests.csproj", "{80790150-6D1A-447F-8F59-99E34938225F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:projectsvm="clr-namespace:Ernist.ViewModels;assembly=Ernist.ViewModels"
+             xmlns:controls="clr-namespace:Ernist.Views.Controls"
+             x:Class="Ernist.Views.CustomViews.ProjectView">
+    <Grid Padding="0, 1, 1, 1" RowSpacing="1" ColumnSpacing="1" BackgroundColor="AntiqueWhite" VerticalOptions="FillAndExpand">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+        </Grid.ColumnDefinitions>
+
+        <Label Text="Death Rattle" Grid.Row="0" Grid.Column="0"/>
+        <ListView ItemsSource="{Binding ObservableCollectionProject}" IsGroupingEnabled="True" GroupDisplayBinding="{Binding ProjectTitle}" RowHeight="150" VerticalOptions="CenterAndExpand"
+                  HeightRequest="150" WidthRequest="150" SeparatorVisibility="Default" Rotation="270" HorizontalOptions="CenterAndExpand" Grid.Row="1" Grid.Column="0">
+            <ListView.BindingContext>
+                <projectsvm:ProjectViewModel />
+            </ListView.BindingContext>
+
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <!--<ContentView Rotation="90" Padding="12">
+                            <Label Text="{Binding ItemTitle}"></Label>
+                        </ContentView>-->
+                        <controls:CardView Padding="12">
+                            <Label Text="{Binding ItemTitle}"></Label>
+                        </controls:CardView>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </Grid>
+</ContentView>
