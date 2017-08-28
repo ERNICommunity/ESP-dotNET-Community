@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using WarColors.Core.Injection;
@@ -18,12 +19,22 @@ namespace WarColors
         {
             this.container = container;
 
-            container
-                .PerRequest<ProjectListViewModel>();
+            RegisterViewModels();
 
             Initialize();
 
             DisplayRootViewFor<ProjectListViewModel>();
+        }
+
+        private void RegisterViewModels()
+        {
+            var assembly = typeof(ProjectListViewModel).GetTypeInfo().Assembly;
+
+            foreach(var vm in  assembly.DefinedTypes.Where(ti => ti.BaseType == typeof(ViewModelBase)))
+            {
+                container
+                    .PerRequest(vm.AsType());
+            }
         }
 
         protected override void PrepareViewFirst(NavigationPage navigationPage)
