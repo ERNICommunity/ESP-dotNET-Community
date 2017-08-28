@@ -1,12 +1,19 @@
-﻿using System;
+﻿using Caliburn.Micro;
+using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Runtime.InteropServices.WindowsRuntime;
+using WarColors.Core.Injection;
+using WarColors.ViewModels;
+using WarColors.Views;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.UI.Core;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -20,8 +27,11 @@ namespace WarColors.UWP
     /// <summary>
     /// Provides application-specific behavior to supplement the default Application class.
     /// </summary>
-    sealed partial class App : Application
+    sealed partial class App 
     {
+        private WinRTContainer winContainer;
+        private IInjectionContainer container;
+
         /// <summary>
         /// Initializes the singleton application object.  This is the first line of authored code
         /// executed, and as such is the logical equivalent of main() or WinMain().
@@ -29,7 +39,24 @@ namespace WarColors.UWP
         public App()
         {
             this.InitializeComponent();
-            this.Suspending += OnSuspending;
+        }
+
+        protected override void Configure()
+        {
+            winContainer = new WinRTContainer();
+            container = new SimpleInjectionContainer(winContainer);
+            winContainer.RegisterWinRTServices();
+
+            container.
+                Singleton<Application>();
+
+            Coroutine.Completed += (s, e) =>
+            {
+                if (e.Error == null)
+                    return;
+
+                Debug.Write(e.Error.Message);
+            };
         }
 
         /// <summary>
@@ -39,44 +66,11 @@ namespace WarColors.UWP
         /// <param name="e">Details about the launch request and process.</param>
         protected override void OnLaunched(LaunchActivatedEventArgs e)
         {
+            Initialize();
 
-#if DEBUG
-            if (System.Diagnostics.Debugger.IsAttached)
-            {
-                this.DebugSettings.EnableFrameRateCounter = true;
-            }
-#endif
+            Xamarin.Forms.Forms.Init(e);
 
-            Frame rootFrame = Window.Current.Content as Frame;
-
-            // Do not repeat app initialization when the Window already has content,
-            // just ensure that the window is active
-            if (rootFrame == null)
-            {
-                // Create a Frame to act as the navigation context and navigate to the first page
-                rootFrame = new Frame();
-
-                rootFrame.NavigationFailed += OnNavigationFailed;
-
-                Xamarin.Forms.Forms.Init(e);
-
-                if (e.PreviousExecutionState == ApplicationExecutionState.Terminated)
-                {
-                    //TODO: Load state from previously suspended application
-                }
-
-                // Place the frame in the current Window
-                Window.Current.Content = rootFrame;
-            }
-
-            if (rootFrame.Content == null)
-            {
-                // When the navigation stack isn't restored navigate to the first page,
-                // configuring the new page by passing required information as a navigation
-                // parameter
-                rootFrame.Navigate(typeof(MainPage), e.Arguments);
-            }
-            // Ensure the current window is active
+            Window.Current.Content = new HostView();
             Window.Current.Activate();
         }
 
@@ -90,6 +84,41 @@ namespace WarColors.UWP
             throw new Exception("Failed to load Page " + e.SourcePageType.FullName);
         }
 
+        protected override void PrepareViewFirst(Frame rootFrame)
+        {
+            var navigation = winContainer.RegisterNavigationService(rootFrame);
+            var navigationManager = SystemNavigationManager.GetForCurrentView();
+
+            navigation.Navigated += (s, e) =>
+            {
+                navigationManager.AppViewBackButtonVisibility = navigation.CanGoBack
+                    ? AppViewBackButtonVisibility.Visible
+                    : AppViewBackButtonVisibility.Collapsed;
+            };
+        }
+
+        protected override IEnumerable<Assembly> SelectAssemblies()
+        {
+            yield return typeof(App).GetTypeInfo().Assembly;
+            yield return typeof(HelloViewModel).GetTypeInfo().Assembly;
+            yield return typeof(HelloView).GetTypeInfo().Assembly;
+        }
+
+        protected override object GetInstance(Type service, string key)
+        {
+            return container.GetInstance(service, key);
+        }
+
+        protected override IEnumerable<object> GetAllInstances(Type service)
+        {
+            return container.GetAllInstances(service);
+        }
+
+        protected override void BuildUp(object instance)
+        {
+            container.BuildUp(instance);
+        }
+
         /// <summary>
         /// Invoked when application execution is being suspended.  Application state is saved
         /// without knowing whether the application will be terminated or resumed with the contents
@@ -97,11 +126,13 @@ namespace WarColors.UWP
         /// </summary>
         /// <param name="sender">The source of the suspend request.</param>
         /// <param name="e">Details about the suspend request.</param>
-        private void OnSuspending(object sender, SuspendingEventArgs e)
+        protected override void OnSuspending(object sender, SuspendingEventArgs e)
         {
             var deferral = e.SuspendingOperation.GetDeferral();
             //TODO: Save application state and stop any background activity
             deferral.Complete();
         }
+
+
     }
 }

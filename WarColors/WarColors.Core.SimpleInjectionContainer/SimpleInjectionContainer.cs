@@ -19,6 +19,8 @@ namespace WarColors.Core.Injection
         public SimpleInjectionContainer(SimpleContainer container)
         {
             this.container = container;
+            this.container
+                .Instance<IInjectionContainer>(this);
         }
 
         public void BuildUp(object instance) => container.BuildUp(instance);

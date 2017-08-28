@@ -3,13 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Xamarin.Forms;
 
-namespace WarColors
+using Xamarin.Forms;
+using Xamarin.Forms.Xaml;
+
+namespace WarColors.Views
 {
-    public partial class MainPage : ContentPage
+    [XamlCompilation(XamlCompilationOptions.Compile)]
+    public partial class HelloView : ContentPage
     {
-        public MainPage()
+        public HelloView()
         {
             InitializeComponent();
         }

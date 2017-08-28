@@ -108,6 +108,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -132,6 +133,22 @@
     <AndroidResource Include="Resources\values\styles.xml" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\WarColors.Core.SimpleInjectionContainer\WarColors.Core.SimpleInjectionContainer.csproj">
+      <Project>{44d476d4-8691-4494-819f-8f7437d43176}</Project>
+      <Name>WarColors.Core.SimpleInjectionContainer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\WarColors.Core\WarColors.Core.csproj">
+      <Project>{bc169e5e-858d-437c-8af8-e30a7cefe587}</Project>
+      <Name>WarColors.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\WarColors.ViewModels\WarColors.ViewModels.csproj">
+      <Project>{1ce6588c-ee9f-4c30-81f7-4962a8a3113f}</Project>
+      <Name>WarColors.ViewModels</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\WarColors.Views\WarColors.Views.csproj">
+      <Project>{4bc2ac09-fe21-44c2-8f8d-d5513e373664}</Project>
+      <Name>WarColors.Views</Name>
+    </ProjectReference>
     <ProjectReference Include="..\WarColors\WarColors.csproj">
       <Project>{1294b665-6562-45f9-becf-7a55643fa04a}</Project>
       <Name>WarColors</Name>
