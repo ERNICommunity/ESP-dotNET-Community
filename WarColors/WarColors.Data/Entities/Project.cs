@@ -1,12 +1,9 @@
-﻿using Realms;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
-namespace WarColors.Data
+namespace WarColors.Data.Entities
 {
-    public class Project : RealmObject
+    public class Project
     {
         public string Title { get; set; }
         public DateTimeOffset Created { get; set; }
@@ -14,6 +11,5 @@ namespace WarColors.Data
         public string Creator { get; set; }
 
         public IList<Model> Models { get; set; }
-
     }
 }

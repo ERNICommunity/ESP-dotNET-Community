@@ -1,4 +1,4 @@
-﻿namespace WarColors.Data
+﻿namespace WarColors.Data.Entities
 {
     public enum PaintType
     {
