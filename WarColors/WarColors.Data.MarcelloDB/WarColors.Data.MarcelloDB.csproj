@@ -5,11 +5,11 @@
     <MinimumVisualStudioVersion>10.0</MinimumVisualStudioVersion>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{1CE6588C-EE9F-4C30-81F7-4962A8A3113F}</ProjectGuid>
+    <ProjectGuid>{36C38371-141C-45B2-AFEC-4E9A23BB3014}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>WarColors.ViewModels</RootNamespace>
-    <AssemblyName>WarColors.ViewModels</AssemblyName>
+    <RootNamespace>WarColors.Data.Marcello</RootNamespace>
+    <AssemblyName>WarColors.Data.Marcello</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <TargetFrameworkProfile>Profile259</TargetFrameworkProfile>
     <FileAlignment>512</FileAlignment>
@@ -35,14 +35,21 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="HelloViewModel.cs" />
-    <Compile Include="ProjectListViewModel.cs" />
+    <Compile Include="Database.cs" />
+    <Compile Include="IDatabase.cs" />
+    <Compile Include="ProjectRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ViewModelBase.cs" />
+    <Compile Include="RepositoryBase.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Caliburn.Micro, Version=3.0.3.0, Culture=neutral, PublicKeyToken=8e5891231f2ed21f, processorArchitecture=MSIL">
       <HintPath>..\packages\Caliburn.Micro.Core.3.1.0\lib\portable-net45+win8+wp8+wpa81+MonoAndroid10+Xamarin.iOS10+MonoTouch10+uap10.0\Caliburn.Micro.dll</HintPath>
+    </Reference>
+    <Reference Include="MarcelloDB, Version=1.0.3.30783, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MarcelloDB.1.0.3\lib\netstandard1.1\MarcelloDB.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\portable-net45+wp80+win8+wpa81\Newtonsoft.Json.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -52,10 +59,6 @@
     <ProjectReference Include="..\WarColors.Data\WarColors.Data.csproj">
       <Project>{4e95667d-803a-40f7-bf72-0ff618a95df9}</Project>
       <Name>WarColors.Data</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\WarColors.Models\WarColors.Models.csproj">
-      <Project>{e430e859-b309-4f08-a63c-e821ed7e9f96}</Project>
-      <Name>WarColors.Models</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />

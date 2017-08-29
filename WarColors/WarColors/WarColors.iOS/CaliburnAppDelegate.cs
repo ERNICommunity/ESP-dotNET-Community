@@ -1,8 +1,11 @@
 ﻿using Caliburn.Micro;
+using MarcelloDB.Platform;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Reflection;
 using WarColors.Core.Injection;
+using WarColors.Data.Marcello;
 using WarColors.ViewModels;
 using WarColors.Views;
 
@@ -21,8 +24,28 @@ namespace WarColors.iOS
         {
             container = new SimpleInjectionContainer();
 
+            RegisterServices();
+
             container
                 .Singleton<WarColors.Application>();
+        }
+
+        private void RegisterServices()
+        {
+            string path = Path.Combine(
+                System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal),
+                "WarColorsData");
+
+            if (!System.IO.Directory.Exists(path))
+            {
+                System.IO.Directory.CreateDirectory(path);
+            }
+
+            container
+                .RegisterHandler(typeof(IDatabase), container => new Database(container.GetInstance<IPlatform>(), path));
+
+            container
+                .PerRequest<IPlatform, MarcelloDB.netfx.Platform>();
         }
 
         protected override void BuildUp(object instance)

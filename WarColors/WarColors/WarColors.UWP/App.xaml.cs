@@ -1,4 +1,5 @@
 ﻿using Caliburn.Micro;
+using MarcelloDB.Platform;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -6,13 +7,16 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Runtime.InteropServices.WindowsRuntime;
+using System.Threading.Tasks;
 using WarColors.Core.Injection;
+using WarColors.Data.Marcello;
 using WarColors.ViewModels;
 using WarColors.Views;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.Storage;
 using Windows.UI.Core;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
@@ -27,7 +31,7 @@ namespace WarColors.UWP
     /// <summary>
     /// Provides application-specific behavior to supplement the default Application class.
     /// </summary>
-    sealed partial class App 
+    sealed partial class App
     {
         private WinRTContainer winContainer;
         private IInjectionContainer container;
@@ -50,13 +54,28 @@ namespace WarColors.UWP
             container.
                 Singleton<Application>();
 
-            Coroutine.Completed += (s, e) =>
+            RegisterServices().ContinueWith(result =>
             {
-                if (e.Error == null)
-                    return;
+                Coroutine.Completed += (s, e) =>
+                {
+                    if (e.Error == null)
+                        return;
 
-                Debug.Write(e.Error.Message);
-            };
+                    Debug.Write(e.Error.Message);
+                };
+            });
+        }
+
+        private async Task RegisterServices()
+        {
+            StorageFolder localFolder = ApplicationData.Current.LocalFolder;
+            var folder = await localFolder.CreateFolderAsync("WarColorsData", CreationCollisionOption.OpenIfExists);
+
+            container
+                    .RegisterHandler(typeof(IDatabase), container => new Database(container.GetInstance<IPlatform>(), folder.Path));
+
+            container
+                .PerRequest<IPlatform, MarcelloDB.uwp.Platform>();
         }
 
         /// <summary>
