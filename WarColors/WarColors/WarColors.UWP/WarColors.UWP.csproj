@@ -96,7 +96,7 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
-    <Compile Include="CustomListViewRenderer.cs" />
+    <Compile Include="Renderers\CustomListViewRenderer.cs" />
     <Compile Include="HostView.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -156,6 +156,14 @@
       <Project>{bc169e5e-858d-437c-8af8-e30a7cefe587}</Project>
       <Name>WarColors.Core</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\WarColors.Data.MarcelloDB\WarColors.Data.MarcelloDB.csproj">
+      <Project>{36c38371-141c-45b2-afec-4e9a23bb3014}</Project>
+      <Name>WarColors.Data.MarcelloDB</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\WarColors.Data\WarColors.Data.csproj">
+      <Project>{4e95667d-803a-40f7-bf72-0ff618a95df9}</Project>
+      <Name>WarColors.Data</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\WarColors.ViewModels\WarColors.ViewModels.csproj">
       <Project>{1ce6588c-ee9f-4c30-81f7-4962a8a3113f}</Project>
       <Name>WarColors.ViewModels</Name>
@@ -165,7 +173,7 @@
       <Name>WarColors.Views</Name>
     </ProjectReference>
     <ProjectReference Include="..\WarColors\WarColors.csproj">
-      <Project>{1294b665-6562-45f9-becf-7a55643fa04a}</Project>
+      <Project>{5db0fe5b-eb9d-4e15-98b7-dbefd3757bb0}</Project>
       <Name>WarColors</Name>
     </ProjectReference>
   </ItemGroup>

@@ -14,6 +14,9 @@ using WarColors.Core.Injection;
 using WarColors.Views;
 using WarColors.ViewModels;
 using System.Reflection;
+using System.IO;
+using MarcelloDB.Platform;
+using WarColors.Data.Marcello;
 
 namespace WarColors.Droid
 {
@@ -38,7 +41,27 @@ namespace WarColors.Droid
         {
             container = new SimpleInjectionContainer();
 
+            RegisterServices();
+
             container.Singleton<Application>();
+        }
+
+        private void RegisterServices()
+        {
+            string path = Path.Combine(
+                System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal),
+                "WarColorsData");
+
+            if (!System.IO.Directory.Exists(path))
+            {
+                System.IO.Directory.CreateDirectory(path);
+            }
+
+            container
+                .RegisterHandler(typeof(IDatabase), container => new Database(container.GetInstance<IPlatform>(), path));
+
+            container
+                .PerRequest<IPlatform, MarcelloDB.netfx.Platform>();
         }
 
         protected override IEnumerable<Assembly> SelectAssemblies()

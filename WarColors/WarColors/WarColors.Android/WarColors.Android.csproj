@@ -63,8 +63,17 @@
     <Reference Include="FormsViewGroup, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Xamarin.Forms.2.3.4.267\lib\MonoAndroid10\FormsViewGroup.dll</HintPath>
     </Reference>
+    <Reference Include="MarcelloDB, Version=1.0.3.30783, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\MarcelloDB.1.0.3\lib\MonoAndroid\MarcelloDB.dll</HintPath>
+    </Reference>
+    <Reference Include="MarcelloDB.netfx, Version=1.0.3.30783, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\MarcelloDB.1.0.3\lib\MonoAndroid\MarcelloDB.netfx.dll</HintPath>
+    </Reference>
     <Reference Include="Mono.Android" />
     <Reference Include="mscorlib" />
+    <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Newtonsoft.Json.9.0.1\lib\portable-net45+wp80+win8+wpa81\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.ObjectModel" />
@@ -141,6 +150,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
     <None Include="packages.config">
       <SubType>Designer</SubType>
     </None>
@@ -170,6 +180,18 @@
       <Project>{bc169e5e-858d-437c-8af8-e30a7cefe587}</Project>
       <Name>WarColors.Core</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\WarColors.Data.MarcelloDB\WarColors.Data.MarcelloDB.csproj">
+      <Project>{36c38371-141c-45b2-afec-4e9a23bb3014}</Project>
+      <Name>WarColors.Data.MarcelloDB</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\WarColors.Data\WarColors.Data.csproj">
+      <Project>{4e95667d-803a-40f7-bf72-0ff618a95df9}</Project>
+      <Name>WarColors.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\WarColors.Models\WarColors.Models.csproj">
+      <Project>{e430e859-b309-4f08-a63c-e821ed7e9f96}</Project>
+      <Name>WarColors.Models</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\WarColors.ViewModels\WarColors.ViewModels.csproj">
       <Project>{1ce6588c-ee9f-4c30-81f7-4962a8a3113f}</Project>
       <Name>WarColors.ViewModels</Name>
@@ -179,7 +201,7 @@
       <Name>WarColors.Views</Name>
     </ProjectReference>
     <ProjectReference Include="..\WarColors\WarColors.csproj">
-      <Project>{1294b665-6562-45f9-becf-7a55643fa04a}</Project>
+      <Project>{5db0fe5b-eb9d-4e15-98b7-dbefd3757bb0}</Project>
       <Name>WarColors</Name>
     </ProjectReference>
   </ItemGroup>

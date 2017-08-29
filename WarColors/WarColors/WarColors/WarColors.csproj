@@ -2,17 +2,17 @@
 <Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
-    <MinimumVisualStudioVersion>11.0</MinimumVisualStudioVersion>
+    <MinimumVisualStudioVersion>10.0</MinimumVisualStudioVersion>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{67111BFB-62DE-493B-ACE5-195BDF4ECEDF}</ProjectGuid>
+    <ProjectGuid>{5DB0FE5B-EB9D-4E15-98B7-DBEFD3757BB0}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>WarColors</RootNamespace>
     <AssemblyName>WarColors</AssemblyName>
-    <FileAlignment>512</FileAlignment>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <TargetFrameworkProfile>Profile259</TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{786C830F-07A1-408B-BD7F-6EE04809D6DB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
@@ -39,6 +39,11 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
     <Reference Include="Caliburn.Micro, Version=3.0.3.0, Culture=neutral, PublicKeyToken=8e5891231f2ed21f, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Caliburn.Micro.Core.3.1.0\lib\portable-net45+win8+wp8+wpa81+MonoAndroid10+Xamarin.iOS10+MonoTouch10+uap10.0\Caliburn.Micro.dll</HintPath>
     </Reference>
@@ -56,12 +61,21 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\..\WarColors.Core\WarColors.Core.csproj">
       <Project>{bc169e5e-858d-437c-8af8-e30a7cefe587}</Project>
       <Name>WarColors.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\WarColors.Data.MarcelloDB\WarColors.Data.MarcelloDB.csproj">
+      <Project>{36c38371-141c-45b2-afec-4e9a23bb3014}</Project>
+      <Name>WarColors.Data.MarcelloDB</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\WarColors.Data\WarColors.Data.csproj">
+      <Project>{4e95667d-803a-40f7-bf72-0ff618a95df9}</Project>
+      <Name>WarColors.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\WarColors.Models\WarColors.Models.csproj">
+      <Project>{e430e859-b309-4f08-a63c-e821ed7e9f96}</Project>
+      <Name>WarColors.Models</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\WarColors.ViewModels\WarColors.ViewModels.csproj">
       <Project>{1ce6588c-ee9f-4c30-81f7-4962a8a3113f}</Project>
@@ -80,4 +94,11 @@
     </PropertyGroup>
     <Error Condition="!Exists('..\..\packages\Xamarin.Forms.2.3.4.267\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\Xamarin.Forms.2.3.4.267\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets'))" />
   </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
 </Project>

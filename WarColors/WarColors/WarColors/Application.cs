@@ -6,6 +6,8 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using WarColors.Core.Injection;
+using WarColors.Data.Marcello;
+using WarColors.Data.Repositories;
 using WarColors.ViewModels;
 using Xamarin.Forms;
 
@@ -21,16 +23,24 @@ namespace WarColors
 
             RegisterViewModels();
 
+            RegisterServices();
+
             Initialize();
 
             DisplayRootViewFor<ProjectListViewModel>();
+        }
+
+        private void RegisterServices()
+        {
+            container
+                .PerRequest<IProjectRepository, ProjectRepository>();
         }
 
         private void RegisterViewModels()
         {
             var assembly = typeof(ProjectListViewModel).GetTypeInfo().Assembly;
 
-            foreach(var vm in  assembly.DefinedTypes.Where(ti => ti.BaseType == typeof(ViewModelBase)))
+            foreach (var vm in assembly.DefinedTypes.Where(ti => ti.BaseType == typeof(ViewModelBase)))
             {
                 container
                     .PerRequest(vm.AsType());
