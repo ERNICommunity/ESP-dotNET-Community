@@ -13,8 +13,8 @@
         <StackLayout>
             <cview:ApplicationHeader />
         </StackLayout>
-        <fv:FlowListView x:Name="flowListView" SeparatorVisibility="None" HasUnevenRows="True" FlowColumnMinWidth="150"
-                         IsGroupingEnabled="True" FlowGroupDisplayBinding="{Binding Title}" FlowGroupShortNameBinding="{Binding Title}" 
+        <fv:FlowListView x:Name="flowListView" SeparatorVisibility="Default" HasUnevenRows="True" FlowColumnMinWidth="150" 
+                         IsGroupingEnabled="True" FlowGroupDisplayBinding="{Binding Title}"
                          FlowItemsSource="{Binding Projects}" Margin="10">
 
             <fv:FlowListView.GroupHeaderTemplate>
@@ -22,12 +22,13 @@
                     <ViewCell>
                         <StackLayout>
                             <Frame BackgroundColor="CadetBlue">
-                                <Label Text="{Binding Path=Key}" Font="Bold, 22" BackgroundColor="CadetBlue" TextColor="White"/>
+                                <Label Text="{Binding Path=Key}" Font="Bold, 22" BackgroundColor="CadetBlue" TextColor="White" />
                             </Frame>
                         </StackLayout>
                     </ViewCell>
                 </DataTemplate>
             </fv:FlowListView.GroupHeaderTemplate>
+            
             <fv:FlowListView.FlowColumnTemplate>
                 <DataTemplate>
                     <cv:CardView Margin="5" HeightRequest="150">

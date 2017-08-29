@@ -96,6 +96,7 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="CustomListViewRenderer.cs" />
     <Compile Include="HostView.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
