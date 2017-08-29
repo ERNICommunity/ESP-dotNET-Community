@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Realms;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace WarColors.Data
 {
-    public class Part
+    public class Part : RealmObject
     {
         public string Name { get; set; }
         public string Description { get; set; }
