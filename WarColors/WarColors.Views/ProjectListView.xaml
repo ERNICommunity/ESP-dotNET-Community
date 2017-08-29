@@ -2,19 +2,33 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:fv="clr-namespace:DLToolkit.Forms.Controls;assembly=DLToolkit.Forms.Controls.FlowListView"
-             xmlns:cv="clr-namespace:WarColors.Views.Controls"             
+             xmlns:cv="clr-namespace:WarColors.Views.Controls"  
+             xmlns:cview="clr-namespace:WarColors.Views.CustomViews"
              x:Class="WarColors.Views.ProjectListView">
     <ContentPage.Padding>
         <OnPlatform x:TypeArguments="Thickness" iOS="0, 20, 0, 0" />
     </ContentPage.Padding>
 
     <StackLayout>
-
-        <fv:FlowListView x:Name="flowListView" FlowColumnCount="3" SeparatorColor="Transparent" SeparatorVisibility="Default" RowHeight="100"
-                         FlowUseAbsoluteLayoutInternally="False" FlowColumnExpand="None"
+        <StackLayout>
+            <cview:ApplicationHeader />
+        </StackLayout>
+        <fv:FlowListView x:Name="flowListView" SeparatorColor="Transparent" SeparatorVisibility="Default" RowHeight="180" FlowColumnMinWidth="180"
+                         FlowUseAbsoluteLayoutInternally="False" FlowColumnExpand="None" 
                          IsGroupingEnabled="True" FlowGroupDisplayBinding="{Binding Title}" FlowGroupShortNameBinding="{Binding Title}" 
-                         FlowItemsSource="{Binding Projects}">
+                         FlowItemsSource="{Binding Projects}" Margin="10">
 
+            <fv:FlowListView.GroupHeaderTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout>
+                            <Frame BackgroundColor="CadetBlue">
+                                <Label Text="{Binding Path=Key}" Font="Bold, 22" BackgroundColor="CadetBlue" TextColor="White" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+                            </Frame>
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </fv:FlowListView.GroupHeaderTemplate>
             <fv:FlowListView.FlowColumnTemplate>
                 <DataTemplate>
                     <cv:CardView Margin="5">
@@ -22,7 +36,6 @@
                     </cv:CardView>
                 </DataTemplate>
             </fv:FlowListView.FlowColumnTemplate>
-
         </fv:FlowListView>
     </StackLayout>
     
