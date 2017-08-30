@@ -27,6 +27,21 @@ namespace WarColors.Data.Marcello
             database = session[SessionName];
         }
 
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                database = null;
+                session.Dispose();
+            }
+        }
+
         public Collection<TEntity, TKey, TIndexDef> GetCollection<TEntity, TKey, TIndexDef>() 
             where TIndexDef : IndexDefinition<TEntity>, new() 
             where TEntity : IEntity<TKey>
