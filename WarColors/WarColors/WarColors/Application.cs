@@ -1,10 +1,6 @@
 ﻿using Caliburn.Micro.Xamarin.Forms;
-using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 using WarColors.Core.Injection;
 using WarColors.Data.Marcello;
 using WarColors.Data.Repositories;
@@ -27,7 +23,7 @@ namespace WarColors
 
             Initialize();
 
-            DisplayRootViewFor<ProjectListViewModel>();
+            DisplayRootViewFor<MasterViewModel>();
         }
 
         private void RegisterServices()
