@@ -9,20 +9,20 @@
         <OnPlatform x:TypeArguments="Thickness" iOS="0, 20, 0, 0" />
     </ContentPage.Padding>
 
-    <StackLayout>
-        <StackLayout>
+    <StackLayout BackgroundColor="DarkGray">
+        <StackLayout BackgroundColor="Black">
             <cview:ApplicationHeader />
         </StackLayout>
         <fv:FlowListView x:Name="flowListView" SeparatorVisibility="Default" HasUnevenRows="True" FlowColumnMinWidth="150" 
                          IsGroupingEnabled="True" FlowGroupDisplayBinding="{Binding Title}"
-                         FlowItemsSource="{Binding Projects}" Margin="10">
+                         FlowItemsSource="{Binding Projects}" Margin="10" BackgroundColor="DarkGray">
 
             <fv:FlowListView.GroupHeaderTemplate>
                 <DataTemplate>
                     <ViewCell>
-                        <StackLayout>
-                            <Frame BackgroundColor="CadetBlue">
-                                <Label Text="{Binding Path=Key}" Font="Bold, 22" BackgroundColor="CadetBlue" TextColor="White" />
+                        <StackLayout BackgroundColor="Gray">
+                            <Frame BackgroundColor="Gray">
+                                <Label Text="{Binding Path=Key}" Font="Bold, 22" BackgroundColor="Gray" TextColor="White" />
                             </Frame>
                         </StackLayout>
                     </ViewCell>
@@ -31,14 +31,16 @@
             
             <fv:FlowListView.FlowColumnTemplate>
                 <DataTemplate>
-                    <cv:CardView Margin="5" HeightRequest="250">
-                        <StackLayout>
-                            <Button>
+                    <cv:CardView Margin="5" HeightRequest="200" BackgroundColor="DarkGray">
+                        <StackLayout BackgroundColor="DarkGray">
+                            <Button BackgroundColor="DarkGray">
                                 <Button.Image>
                                     <OnPlatform x:TypeArguments="FileImageSource" iOS="defaultImage.png" Android="defaultImage.png" WinPhone="Images/defaultImage.png" />
                                 </Button.Image>
                             </Button>
-                            <Label Text="{Binding Title}" HorizontalTextAlignment="Center" />
+                            <StackLayout BackgroundColor="DarkGray">
+                                <Label Text="{Binding Title}" HorizontalTextAlignment="Center" BackgroundColor="White" Margin="10, -10, 10, 0"/>
+                            </StackLayout>
                         </StackLayout>
                     </cv:CardView>
                 </DataTemplate>
