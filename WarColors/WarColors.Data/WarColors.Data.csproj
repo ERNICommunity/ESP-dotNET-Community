@@ -41,6 +41,7 @@
     <Compile Include="Entities\Part.cs" />
     <Compile Include="Entities\PartTechnique.cs" />
     <Compile Include="Entities\Project.cs" />
+    <Compile Include="ISeedDatabase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\IEntity.cs" />
     <Compile Include="Repositories\IProjectRepository.cs" />

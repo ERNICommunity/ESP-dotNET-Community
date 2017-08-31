@@ -2,9 +2,11 @@
 using System.Linq;
 using System.Reflection;
 using WarColors.Core.Injection;
+using WarColors.Data;
 using WarColors.Data.Marcello;
 using WarColors.Data.Repositories;
 using WarColors.ViewModels;
+using WarColors.Views;
 using Xamarin.Forms;
 
 namespace WarColors
@@ -30,7 +32,8 @@ namespace WarColors
         private void RegisterServices()
         {
             container
-                .PerRequest<IProjectRepository, ProjectRepository>();
+                .PerRequest<IProjectRepository, ProjectRepository>()
+                .PerRequest<ISeedDatabase, SeedDatabase>();
         }
 
         private void RegisterViewModels()

@@ -1,9 +1,13 @@
-﻿using System;
+﻿using Caliburn.Micro;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using WarColors.Core.Injection;
+using WarColors.Data;
 using WarColors.Data.Repositories;
 using WarColors.Models;
 
@@ -12,55 +16,47 @@ namespace WarColors.ViewModels
     public class ProjectListViewModel : ViewModelBase
     {
         private ObservableCollection<Project> projects;
-        private IProjectRepository projectRepository;
+        private IFactory<IProjectRepository> projectFactoryRepository;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ProjectViewModel"/> class.
         /// </summary>
-        public ProjectListViewModel(IProjectRepository projectRepository)
+        public ProjectListViewModel(IFactory<IProjectRepository> projectFactoryRepository)
         {
-            InitializeDataAsync(projectRepository).ContinueWith(result =>
+            var sd = IoC.Get<ISeedDatabase>();
+            sd.SeedAsync(true).ContinueWith(result =>
             {
-                var project1 = new Project("Death Batallion")
-                {
-                    new ItemProject { Title = "Skeleton" },
-                    new ItemProject { Title = "Zombie" },
-                    new ItemProject { Title = "Neferata" },
-                    new ItemProject { Title = "Nagash" }
-                };
+                this.projectFactoryRepository = projectFactoryRepository;
 
-                var project2 = new Project("Kharadron Overlords")
-                {
-                    new ItemProject { Title = "Admiral" },
-                    new ItemProject { Title = "Frigate" },
-                    new ItemProject { Title = "Gunhauler" },
-                    new ItemProject { Title = "Arkanout Company" },
-                    new ItemProject { Title = "Skywardens" }
-                };
-
-                // TODO - Projects DataAccess to create the list.
-                Projects = new ObservableCollection<Project>
-                {
-                    project1, project2
-                };
+                LoadProjects().ContinueWith(r => { });
             });
         }
 
-        private static async Task InitializeDataAsync(IProjectRepository projectRepository)
+        private async Task LoadProjects()
         {
-            var p2 = await projectRepository.GetAllAsync();
-
-            if (!p2.Any(p => p.Title == "Death Batallion"))
+            using (var projectRepository = projectFactoryRepository.Get())
             {
-                var p1 = new WarColors.Data.Entities.Project()
+                try
                 {
-                    Id = Guid.NewGuid().ToString(),
-                    Title = "Death Batallion"
-                };
+                    var items = await projectRepository.GetAllAsync();
 
-                await projectRepository.SaveAsync(p1);
+                    var result = new List<Project>();
+                    foreach (var p in items)
+                    {
+                        var project = new Project(p.Title);
+                        foreach (var m in p.Models)
+                        {
+                            project.Add(new ItemProject { Title = m.Name });
+                        }
+                        result.Add(project);
+                    }
 
-                var p3 = await projectRepository.GetAsync(p1.Id);
+                    Projects = new ObservableCollection<Project>(result);
+                }
+                catch (Exception e)
+                {
+                    Debug.WriteLine(e);
+                }
             }
         }
 

@@ -40,6 +40,7 @@
     <Compile Include="ProjectRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RepositoryBase.cs" />
+    <Compile Include="SeedDatabase.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Caliburn.Micro, Version=3.0.3.0, Culture=neutral, PublicKeyToken=8e5891231f2ed21f, processorArchitecture=MSIL">
@@ -56,6 +57,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\WarColors.Core\WarColors.Core.csproj">
+      <Project>{bc169e5e-858d-437c-8af8-e30a7cefe587}</Project>
+      <Name>WarColors.Core</Name>
+    </ProjectReference>
     <ProjectReference Include="..\WarColors.Data\WarColors.Data.csproj">
       <Project>{4e95667d-803a-40f7-bf72-0ff618a95df9}</Project>
       <Name>WarColors.Data</Name>

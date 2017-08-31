@@ -24,7 +24,7 @@ namespace WarColors.Data.Marcello
         {
             this.platform = platform;
             session = new Session(platform, path);
-            database = session[SessionName];
+            database = session[SessionName];            
         }
 
         public void Dispose()
