@@ -3,16 +3,12 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:fv="clr-namespace:DLToolkit.Forms.Controls;assembly=DLToolkit.Forms.Controls.FlowListView"
              xmlns:cv="clr-namespace:WarColors.Views.Controls"  
-             xmlns:cview="clr-namespace:WarColors.Views.CustomViews"
              x:Class="WarColors.Views.ProjectListView">
     <ContentPage.Padding>
         <OnPlatform x:TypeArguments="Thickness" iOS="0, 20, 0, 0" />
     </ContentPage.Padding>
 
     <StackLayout BackgroundColor="DarkGray">
-        <StackLayout BackgroundColor="Black">
-            <cview:ApplicationHeader />
-        </StackLayout>
         <fv:FlowListView x:Name="flowListView" SeparatorVisibility="Default" HasUnevenRows="True" FlowColumnMinWidth="150" 
                          IsGroupingEnabled="True" FlowGroupDisplayBinding="{Binding Title}"
                          FlowItemsSource="{Binding Projects}" Margin="10" BackgroundColor="DarkGray">

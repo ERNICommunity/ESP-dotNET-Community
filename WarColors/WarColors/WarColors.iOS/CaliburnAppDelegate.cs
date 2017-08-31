@@ -66,8 +66,8 @@ namespace WarColors.iOS
         protected override IEnumerable<Assembly> SelectAssemblies()
         {
             yield return GetType().Assembly;
-            yield return typeof(HelloViewModel).Assembly;
-            yield return typeof(HelloView).Assembly;
+            yield return typeof(MasterViewModel).Assembly;
+            yield return typeof(MasterView).Assembly;
         }
     }
 }

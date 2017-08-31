@@ -10,9 +10,9 @@ using Xamarin.Forms.Xaml;
 namespace WarColors.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class HelloView : ContentPage
+    public partial class MasterView : MasterDetailPage
     {
-        public HelloView()
+        public MasterView()
         {
             InitializeComponent();
         }
