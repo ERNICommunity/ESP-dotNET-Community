@@ -35,8 +35,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Injection\IFactory.cs" />
     <Compile Include="Injection\IInjectionContainer.cs" />
     <Compile Include="Injection\IInjectionContainerExtensions.cs" />
+    <Compile Include="Injection\Factory.cs" />
     <Compile Include="Injection\Scope.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

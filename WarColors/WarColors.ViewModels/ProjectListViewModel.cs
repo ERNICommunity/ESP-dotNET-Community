@@ -1,9 +1,12 @@
-﻿using System;
+﻿using Caliburn.Micro;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using WarColors.Data;
 using WarColors.Data.Repositories;
 using WarColors.Models;
 
@@ -19,31 +22,37 @@ namespace WarColors.ViewModels
         /// </summary>
         public ProjectListViewModel(IProjectRepository projectRepository)
         {
-            InitializeDataAsync(projectRepository).ContinueWith(result =>
+            var sd = IoC.Get<ISeedDatabase>();
+            sd.SeedAsync(true, projectRepository).ContinueWith(result =>
             {
-                var project1 = new Project("Death Batallion")
-                {
-                    new ItemProject { Title = "Skeleton" },
-                    new ItemProject { Title = "Zombie" },
-                    new ItemProject { Title = "Neferata" },
-                    new ItemProject { Title = "Nagash" }
-                };
+                this.projectRepository = projectRepository;
 
-                var project2 = new Project("Kharadron Overlords")
-                {
-                    new ItemProject { Title = "Admiral" },
-                    new ItemProject { Title = "Frigate" },
-                    new ItemProject { Title = "Gunhauler" },
-                    new ItemProject { Title = "Arkanout Company" },
-                    new ItemProject { Title = "Skywardens" }
-                };
-
-                // TODO - Projects DataAccess to create the list.
-                Projects = new ObservableCollection<Project>
-                {
-                    project1, project2
-                };
+                LoadProjects().ContinueWith(r => { });
             });
+        }
+
+        private async Task LoadProjects()
+        {
+            try
+            {
+                var items = await projectRepository.GetAllAsync();
+
+                var result = new List<Project>();
+                foreach (var p in items)
+                {
+                    var project = new Project(p.Title);
+                    foreach (var m in p.Models)
+                    {
+                        project.Add(new ItemProject { Title = m.Name });
+                    }
+                    result.Add(project);
+                }
+
+                Projects = new ObservableCollection<Project>(result);
+            } catch(Exception e)
+            {
+                Debug.WriteLine(e);
+            }
         }
 
         private static async Task InitializeDataAsync(IProjectRepository projectRepository)
