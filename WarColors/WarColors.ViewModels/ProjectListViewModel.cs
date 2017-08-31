@@ -6,6 +6,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using WarColors.Core.Injection;
 using WarColors.Data;
 using WarColors.Data.Repositories;
 using WarColors.Models;
@@ -15,17 +16,17 @@ namespace WarColors.ViewModels
     public class ProjectListViewModel : ViewModelBase
     {
         private ObservableCollection<Project> projects;
-        private IProjectRepository projectRepository;
+        private IFactory<IProjectRepository> projectFactoryRepository;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ProjectViewModel"/> class.
         /// </summary>
-        public ProjectListViewModel(IProjectRepository projectRepository)
+        public ProjectListViewModel(IFactory<IProjectRepository> projectFactoryRepository)
         {
             var sd = IoC.Get<ISeedDatabase>();
-            sd.SeedAsync(true, projectRepository).ContinueWith(result =>
+            sd.SeedAsync(true).ContinueWith(result =>
             {
-                this.projectRepository = projectRepository;
+                this.projectFactoryRepository = projectFactoryRepository;
 
                 LoadProjects().ContinueWith(r => { });
             });
@@ -33,43 +34,29 @@ namespace WarColors.ViewModels
 
         private async Task LoadProjects()
         {
-            try
+            using (var projectRepository = projectFactoryRepository.Get())
             {
-                var items = await projectRepository.GetAllAsync();
-
-                var result = new List<Project>();
-                foreach (var p in items)
+                try
                 {
-                    var project = new Project(p.Title);
-                    foreach (var m in p.Models)
+                    var items = await projectRepository.GetAllAsync();
+
+                    var result = new List<Project>();
+                    foreach (var p in items)
                     {
-                        project.Add(new ItemProject { Title = m.Name });
+                        var project = new Project(p.Title);
+                        foreach (var m in p.Models)
+                        {
+                            project.Add(new ItemProject { Title = m.Name });
+                        }
+                        result.Add(project);
                     }
-                    result.Add(project);
+
+                    Projects = new ObservableCollection<Project>(result);
                 }
-
-                Projects = new ObservableCollection<Project>(result);
-            } catch(Exception e)
-            {
-                Debug.WriteLine(e);
-            }
-        }
-
-        private static async Task InitializeDataAsync(IProjectRepository projectRepository)
-        {
-            var p2 = await projectRepository.GetAllAsync();
-
-            if (!p2.Any(p => p.Title == "Death Batallion"))
-            {
-                var p1 = new WarColors.Data.Entities.Project()
+                catch (Exception e)
                 {
-                    Id = Guid.NewGuid().ToString(),
-                    Title = "Death Batallion"
-                };
-
-                await projectRepository.SaveAsync(p1);
-
-                var p3 = await projectRepository.GetAsync(p1.Id);
+                    Debug.WriteLine(e);
+                }
             }
         }
 

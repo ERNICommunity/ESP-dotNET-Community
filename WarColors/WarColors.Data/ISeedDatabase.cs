@@ -5,6 +5,6 @@ namespace WarColors.Data
 {
     public interface ISeedDatabase
     {
-        Task SeedAsync(bool wipeDatabase, IProjectRepository projectRepository);
+        Task SeedAsync(bool wipeDatabase);
     }
 }

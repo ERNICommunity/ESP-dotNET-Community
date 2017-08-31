@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace WarColors.Data.Repositories
 {
-    public interface IRepository<TEntity, TKey> where TEntity : IEntity<TKey>
+    public interface IRepository<TEntity, TKey> : IDisposable where TEntity : IEntity<TKey>
     {
         Task SaveAsync(TEntity entity);
 

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using WarColors.Core.Injection;
 using WarColors.Data.Entities;
 using WarColors.Data.Repositories;
 
@@ -9,13 +10,17 @@ namespace WarColors.Data.Marcello
 {
     public class SeedDatabase : ISeedDatabase
     {
-        public SeedDatabase()
+        IFactory<IProjectRepository> projectFactoryRepository;
+
+        public SeedDatabase(IFactory<IProjectRepository> projectFactoryRepository)
         {
+            this.projectFactoryRepository = projectFactoryRepository;
         }
 
-        public async Task SeedAsync(bool wipeDatabase, IProjectRepository projectRepository)
+        public async Task SeedAsync(bool wipeDatabase)
         {
-            IEnumerable<Project> projects = null;
+            using (var projectRepository = projectFactoryRepository.Get()) { 
+                IEnumerable<Project> projects = null;
 
             if (wipeDatabase)
             {
@@ -31,16 +36,16 @@ namespace WarColors.Data.Marcello
             }
 
             projects = await projectRepository.GetAllAsync();
-            if (!projects.Any())
-            {
-                var project = new Project()
+                if (!projects.Any())
                 {
-                    Id = Guid.NewGuid().ToString(),
-                    Title = "Kharadron Overlords",
-                    Description = "Armies on Parade",
-                    Creator = "Diego",
-                    Created = DateTime.Now,
-                    Models = new List<Model>()
+                    var project = new Project()
+                    {
+                        Id = Guid.NewGuid().ToString(),
+                        Title = "Kharadron Overlords",
+                        Description = "Armies on Parade",
+                        Creator = "Diego",
+                        Created = DateTime.Now,
+                        Models = new List<Model>()
                                     {
                                         new Model
                                         {
@@ -63,16 +68,16 @@ namespace WarColors.Data.Marcello
                                             Name = "Grunstock Gunhauler"
                                         }
                                     }
-                };
+                    };
 
-                var project2 = new Project()
-                {
-                    Id = Guid.NewGuid().ToString(),
-                    Title = "Death Batallion",
-                    Description = "Armies on Parade",
-                    Creator = "Diego",
-                    Created = DateTime.Now,
-                    Models = new List<Model>()
+                    var project2 = new Project()
+                    {
+                        Id = Guid.NewGuid().ToString(),
+                        Title = "Death Batallion",
+                        Description = "Armies on Parade",
+                        Creator = "Diego",
+                        Created = DateTime.Now,
+                        Models = new List<Model>()
                                     {
                                         new Model
                                         {
@@ -91,10 +96,11 @@ namespace WarColors.Data.Marcello
                                             Name = "Nagash"
                                         }
                                     }
-                };
+                    };
 
-                await projectRepository.SaveAsync(project);
-                await projectRepository.SaveAsync(project2);
+                    await projectRepository.SaveAsync(project);
+                    await projectRepository.SaveAsync(project2);
+                }
             }
         }
     }

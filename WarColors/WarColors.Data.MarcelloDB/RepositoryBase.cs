@@ -43,5 +43,19 @@ namespace WarColors.Data.Marcello
         {
             return Task.Run(() => collection.Persist(entity));
         }
+
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        protected void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                db.Dispose();
+            }
+        }
     }
 }

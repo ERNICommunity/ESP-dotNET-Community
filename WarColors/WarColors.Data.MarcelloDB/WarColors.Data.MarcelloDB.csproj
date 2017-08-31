@@ -57,6 +57,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\WarColors.Core\WarColors.Core.csproj">
+      <Project>{bc169e5e-858d-437c-8af8-e30a7cefe587}</Project>
+      <Name>WarColors.Core</Name>
+    </ProjectReference>
     <ProjectReference Include="..\WarColors.Data\WarColors.Data.csproj">
       <Project>{4e95667d-803a-40f7-bf72-0ff618a95df9}</Project>
       <Name>WarColors.Data</Name>
