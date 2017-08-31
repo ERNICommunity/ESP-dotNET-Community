@@ -36,11 +36,17 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Controls\CardView.cs" />
+    <Compile Include="CustomViews\ApplicationHeader.xaml.cs">
+      <DependentUpon>ApplicationHeader.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MainView.xaml.cs">
+      <DependentUpon>MainView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="MasterView.xaml.cs">
       <DependentUpon>MasterView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="MasterViewMaster.xaml.cs">
-      <DependentUpon>MasterViewMaster.xaml</DependentUpon>
+    <Compile Include="ColumnMasterView.xaml.cs">
+      <DependentUpon>ColumnMasterView.xaml</DependentUpon>
     </Compile>
     <Compile Include="ProjectListView.xaml.cs">
       <DependentUpon>ProjectListView.xaml</DependentUpon>
@@ -83,13 +89,29 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="MasterViewMaster.xaml">
+    <EmbeddedResource Include="ColumnMasterView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="MainView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="CustomViews\" />
+    <ProjectReference Include="..\WarColors.ViewModels\WarColors.ViewModels.csproj">
+      <Project>{1ce6588c-ee9f-4c30-81f7-4962a8a3113f}</Project>
+      <Name>WarColors.ViewModels</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="CustomViews\ApplicationHeader.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="..\packages\Xamarin.Forms.2.3.4.267\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets" Condition="Exists('..\packages\Xamarin.Forms.2.3.4.267\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets')" />

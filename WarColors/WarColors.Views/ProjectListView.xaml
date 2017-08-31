@@ -3,45 +3,75 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:fv="clr-namespace:DLToolkit.Forms.Controls;assembly=DLToolkit.Forms.Controls.FlowListView"
              xmlns:cv="clr-namespace:WarColors.Views.Controls"  
+             xmlns:cviews="clr-namespace:WarColors.Views.CustomViews"
              x:Class="WarColors.Views.ProjectListView">
+
     <ContentPage.Padding>
         <OnPlatform x:TypeArguments="Thickness" iOS="0, 20, 0, 0" />
     </ContentPage.Padding>
 
-    <StackLayout BackgroundColor="DarkGray">
-        <fv:FlowListView x:Name="flowListView" SeparatorVisibility="Default" HasUnevenRows="True" FlowColumnMinWidth="150" 
+    <StackLayout>
+
+        <!-- Custom Header -->
+        <StackLayout BackgroundColor="Black" Padding="10, 10, 10, 10">
+            <cviews:ApplicationHeader />
+        </StackLayout>
+
+
+        <fv:FlowListView x:Name="flowListView" SeparatorVisibility="None" HasUnevenRows="True" FlowColumnMinWidth="185" 
                          IsGroupingEnabled="True" FlowGroupDisplayBinding="{Binding Title}"
-                         FlowItemsSource="{Binding Projects}" Margin="10" BackgroundColor="DarkGray">
+                         FlowItemsSource="{Binding Projects}" Margin="10">
 
             <fv:FlowListView.GroupHeaderTemplate>
                 <DataTemplate>
                     <ViewCell>
-                        <StackLayout BackgroundColor="Gray">
-                            <Frame BackgroundColor="Gray">
-                                <Label Text="{Binding Path=Key}" Font="Bold, 22" BackgroundColor="Gray" TextColor="White" />
+                        <StackLayout>
+                            <Frame BackgroundColor="CadetBlue">
+                                <Label Text="{Binding Path=Key}" Font="Bold, 22" BackgroundColor="CadetBlue" TextColor="White" />
                             </Frame>
                         </StackLayout>
                     </ViewCell>
                 </DataTemplate>
             </fv:FlowListView.GroupHeaderTemplate>
-            
+
             <fv:FlowListView.FlowColumnTemplate>
                 <DataTemplate>
-                    <cv:CardView Margin="5" HeightRequest="200" BackgroundColor="DarkGray">
-                        <StackLayout BackgroundColor="DarkGray">
-                            <Button BackgroundColor="DarkGray">
+                    <cv:CardView Margin="5" HeightRequest="230">
+                        <StackLayout>
+
+                            <Button BackgroundColor="Transparent">
                                 <Button.Image>
                                     <OnPlatform x:TypeArguments="FileImageSource" iOS="defaultImage.png" Android="defaultImage.png" WinPhone="Images/defaultImage.png" />
                                 </Button.Image>
                             </Button>
-                            <StackLayout BackgroundColor="DarkGray">
-                                <Label Text="{Binding Title}" HorizontalTextAlignment="Center" BackgroundColor="White" Margin="10, -10, 10, 0"/>
-                            </StackLayout>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="90" />
+                                    <ColumnDefinition Width="39" />
+                                    <ColumnDefinition Width="37" />
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+
+                                <Label Text="{Binding Title}" HorizontalTextAlignment="Center"  VerticalTextAlignment="Center" />
+                                <Button Grid.Column="1" HorizontalOptions="Fill" VerticalOptions="Fill" BackgroundColor="Transparent">
+                                    <Button.Image>
+                                        <OnPlatform x:TypeArguments="FileImageSource" iOS="editImage.png" Android="editImage.png" WinPhone="Images/editImage.png" />
+                                    </Button.Image>
+                                </Button>
+                                <Button Grid.Column="2" HorizontalOptions="Fill" VerticalOptions="Fill" BackgroundColor="Transparent">
+                                    <Button.Image>
+                                        <OnPlatform x:TypeArguments="FileImageSource" iOS="deleteImage.png" Android="deleteImage.png" WinPhone="Images/deleteImage.png" />
+                                    </Button.Image>
+                                </Button>
+                            </Grid>
+                            
                         </StackLayout>
                     </cv:CardView>
                 </DataTemplate>
             </fv:FlowListView.FlowColumnTemplate>
         </fv:FlowListView>
     </StackLayout>
-    
+
 </ContentPage>

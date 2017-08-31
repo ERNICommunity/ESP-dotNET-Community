@@ -3,14 +3,16 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="WarColors.Views.MasterView"
              xmlns:pages="clr-namespace:WarColors.Views">
-  <MasterDetailPage.Master>
-    <pages:MasterViewMaster x:Name="MasterPage" />
-  </MasterDetailPage.Master>
-  <MasterDetailPage.Detail>
-    <NavigationPage>
-      <x:Arguments>
-        <pages:ProjectListView />
-      </x:Arguments>
-    </NavigationPage>
-  </MasterDetailPage.Detail>
+
+    <MasterDetailPage.Master>
+        <pages:ColumnMasterView x:Name="MasterPage" />
+    </MasterDetailPage.Master>
+
+    <MasterDetailPage.Detail>
+        <NavigationPage>
+            <x:Arguments>
+                <pages:MainView />
+            </x:Arguments>
+        </NavigationPage>
+    </MasterDetailPage.Detail>
 </MasterDetailPage>

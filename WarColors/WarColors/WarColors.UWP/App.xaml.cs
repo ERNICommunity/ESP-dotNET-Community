@@ -119,8 +119,8 @@ namespace WarColors.UWP
         protected override IEnumerable<Assembly> SelectAssemblies()
         {
             yield return typeof(App).GetTypeInfo().Assembly;
-            yield return typeof(MasterViewModel).GetTypeInfo().Assembly;
-            yield return typeof(MasterView).GetTypeInfo().Assembly;
+            yield return typeof(ProjectListViewModel).GetTypeInfo().Assembly;
+            yield return typeof(ProjectListView).GetTypeInfo().Assembly;
         }
 
         protected override object GetInstance(Type service, string key)

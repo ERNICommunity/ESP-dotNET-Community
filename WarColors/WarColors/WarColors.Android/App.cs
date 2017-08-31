@@ -67,8 +67,8 @@ namespace WarColors.Droid
         protected override IEnumerable<Assembly> SelectAssemblies()
         {
             yield return GetType().Assembly;
-            yield return typeof(MasterViewModel).Assembly;
-            yield return typeof(MasterView).Assembly;
+            yield return typeof(ProjectListViewModel).Assembly;
+            yield return typeof(ProjectListView).Assembly;
         }
 
         protected override void BuildUp(object instance)
