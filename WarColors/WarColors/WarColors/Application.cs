@@ -2,12 +2,9 @@
 using System.Linq;
 using System.Reflection;
 using WarColors.Core.Injection;
-using WarColors.Core.Navigation;
 using WarColors.Data.Marcello;
 using WarColors.Data.Repositories;
-using WarColors.Navigation;
 using WarColors.ViewModels;
-using WarColors.Views;
 using Xamarin.Forms;
 
 namespace WarColors
@@ -26,15 +23,13 @@ namespace WarColors
 
             Initialize();
 
-            DisplayRootView<MasterView>();
-            //DisplayRootViewFor<MasterViewModel>();
+            DisplayRootViewFor<MasterViewModel>();
         }
 
         private void RegisterServices()
         {
             container
-                .PerRequest<IProjectRepository, ProjectRepository>()
-                .PerRequest<IMyNavigationService, MyNavigationService>();
+                .PerRequest<IProjectRepository, ProjectRepository>();
         }
 
         private void RegisterViewModels()
@@ -46,10 +41,6 @@ namespace WarColors
                 container
                     .PerRequest(vm.AsType());
             }
-
-            container
-                .PerRequest(typeof(MasterViewModel))
-                .PerRequest(typeof(ProjectListView));
         }
 
         protected override void PrepareViewFirst(NavigationPage navigationPage)

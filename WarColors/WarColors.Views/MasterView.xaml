@@ -2,12 +2,15 @@
 <MasterDetailPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="WarColors.Views.MasterView"
-                  xmlns:cm="clr-namespace:Caliburn.Micro.Xamarin.Forms;assembly=Caliburn.Micro.Platform.Xamarin.Forms"
              xmlns:pages="clr-namespace:WarColors.Views">
-    <MasterDetailPage.Master>
-        <pages:ColumnMasterView x:Name="MasterPage" />
-    </MasterDetailPage.Master>
-    <MasterDetailPage.Detail>
-        <ContentPage cm:View.Model="{Binding ActiveItem}" cm:View.Context="{Binding ActiveView}" />
-    </MasterDetailPage.Detail>
+  <MasterDetailPage.Master>
+    <pages:MasterViewMaster x:Name="MasterPage" />
+  </MasterDetailPage.Master>
+  <MasterDetailPage.Detail>
+    <NavigationPage>
+      <x:Arguments>
+        <pages:ProjectListView />
+      </x:Arguments>
+    </NavigationPage>
+  </MasterDetailPage.Detail>
 </MasterDetailPage>

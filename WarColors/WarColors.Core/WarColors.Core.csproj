@@ -38,7 +38,6 @@
     <Compile Include="Injection\IInjectionContainer.cs" />
     <Compile Include="Injection\IInjectionContainerExtensions.cs" />
     <Compile Include="Injection\Scope.cs" />
-    <Compile Include="Navigation\IMyNavigationService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />

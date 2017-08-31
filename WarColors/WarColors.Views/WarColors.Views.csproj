@@ -39,8 +39,8 @@
     <Compile Include="MasterView.xaml.cs">
       <DependentUpon>MasterView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ColumnMasterView.xaml.cs">
-      <DependentUpon>ColumnMasterView.xaml</DependentUpon>
+    <Compile Include="MasterViewMaster.xaml.cs">
+      <DependentUpon>MasterViewMaster.xaml</DependentUpon>
     </Compile>
     <Compile Include="ProjectListView.xaml.cs">
       <DependentUpon>ProjectListView.xaml</DependentUpon>
@@ -83,7 +83,7 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="ColumnMasterView.xaml">
+    <EmbeddedResource Include="MasterViewMaster.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>
