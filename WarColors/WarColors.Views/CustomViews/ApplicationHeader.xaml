@@ -4,7 +4,25 @@
              x:Class="WarColors.Views.CustomViews.ApplicationHeader">
 
     <StackLayout>
-        <Label Text="WarColors" Font="Bold, 30" BackgroundColor="Black" TextColor="White" HorizontalTextAlignment="Start"/>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <Label Text="WarColors" Font="Bold, 30" BackgroundColor="DeepSkyBlue" TextColor="White" HorizontalTextAlignment="Start"
+                   Grid.Column="0"/>
+            <StackLayout HorizontalOptions="EndAndExpand" VerticalOptions="Center" Grid.Column="1">
+                <Button HorizontalOptions="Fill" VerticalOptions="Fill" BackgroundColor="Transparent">
+                    <Button.Image>
+                        <OnPlatform x:TypeArguments="FileImageSource" iOS="addImage.png" Android="addImage.png" WinPhone="Images/addImage.png" />
+                    </Button.Image>
+                </Button>
+            </StackLayout>
+        </Grid>
     </StackLayout>
     
 </ContentView>

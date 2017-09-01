@@ -107,9 +107,12 @@
     <None Include="WarColors.UWP_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Images\addImage.png" />
     <Content Include="Images\defaultImage.png" />
     <Content Include="Images\deleteImage.png" />
+    <Content Include="Images\deleteImageWhite.png" />
     <Content Include="Images\editImage.png" />
+    <Content Include="Images\editImageWhite.png" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-100.png" />
     <Content Include="Assets\LockScreenLogo.scale-125.png" />
