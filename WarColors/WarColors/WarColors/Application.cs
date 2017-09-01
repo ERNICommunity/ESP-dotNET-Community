@@ -33,7 +33,8 @@ namespace WarColors
         {
             container
                 .PerRequest<IProjectRepository, ProjectRepository>()
-                .PerRequest<ISeedDatabase, SeedDatabase>();
+                .PerRequest<ISeedDatabase, SeedDatabase>()
+                .PerRequest<IFactory<IProjectRepository>, Factory<IProjectRepository>>();
         }
 
         private void RegisterViewModels()

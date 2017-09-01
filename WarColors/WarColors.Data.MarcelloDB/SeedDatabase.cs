@@ -19,33 +19,36 @@ namespace WarColors.Data.Marcello
 
         public async Task SeedAsync(bool wipeDatabase)
         {
-            using (var projectRepository = projectFactoryRepository.Get()) { 
-                IEnumerable<Project> projects = null;
-
-            if (wipeDatabase)
+            try
             {
-                projects = await projectRepository.GetAllAsync();
-
-                var tasks = new List<Task>();
-                foreach (var p in projects)
+                using (var projectRepository = projectFactoryRepository.Get())
                 {
-                    tasks.Add(projectRepository.DeleteAsync(p.Id));
-                }
+                    IEnumerable<Project> projects = null;
 
-                Task.WaitAll(tasks.ToArray());
-            }
-
-            projects = await projectRepository.GetAllAsync();
-                if (!projects.Any())
-                {
-                    var project = new Project()
+                    if (wipeDatabase)
                     {
-                        Id = Guid.NewGuid().ToString(),
-                        Title = "Kharadron Overlords",
-                        Description = "Armies on Parade",
-                        Creator = "Diego",
-                        Created = DateTime.Now,
-                        Models = new List<Model>()
+                        projects = await projectRepository.GetAllAsync();
+
+                        var tasks = new List<Task>();
+                        foreach (var p in projects)
+                        {
+                            tasks.Add(projectRepository.DeleteAsync(p.Id));
+                        }
+
+                        Task.WaitAll(tasks.ToArray());
+                    }
+
+                    projects = await projectRepository.GetAllAsync();
+                    if (!projects.Any())
+                    {
+                        var project = new Project()
+                        {
+                            Id = Guid.NewGuid().ToString(),
+                            Title = "Kharadron Overlords",
+                            Description = "Armies on Parade",
+                            Creator = "Diego",
+                            Created = DateTime.Now,
+                            Models = new List<Model>()
                                     {
                                         new Model
                                         {
@@ -68,16 +71,16 @@ namespace WarColors.Data.Marcello
                                             Name = "Grunstock Gunhauler"
                                         }
                                     }
-                    };
+                        };
 
-                    var project2 = new Project()
-                    {
-                        Id = Guid.NewGuid().ToString(),
-                        Title = "Death Batallion",
-                        Description = "Armies on Parade",
-                        Creator = "Diego",
-                        Created = DateTime.Now,
-                        Models = new List<Model>()
+                        var project2 = new Project()
+                        {
+                            Id = Guid.NewGuid().ToString(),
+                            Title = "Death Batallion",
+                            Description = "Armies on Parade",
+                            Creator = "Diego",
+                            Created = DateTime.Now,
+                            Models = new List<Model>()
                                     {
                                         new Model
                                         {
@@ -96,11 +99,15 @@ namespace WarColors.Data.Marcello
                                             Name = "Nagash"
                                         }
                                     }
-                    };
+                        };
 
-                    await projectRepository.SaveAsync(project);
-                    await projectRepository.SaveAsync(project2);
+                        await projectRepository.SaveAsync(project);
+                        await projectRepository.SaveAsync(project2);
+                    }
                 }
+            } catch(Exception ex)
+            {
+                var x  = ex;
             }
         }
     }
