@@ -1,14 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:fv="clr-namespace:DLToolkit.Forms.Controls;assembly=DLToolkit.Forms.Controls.FlowListView"
              xmlns:cv="clr-namespace:WarColors.Views.Controls"  
              xmlns:cviews="clr-namespace:WarColors.Views.CustomViews"
              x:Class="WarColors.Views.ProjectListView">
 
-    <ContentPage.Padding>
+    <ContentView.Padding>
         <OnPlatform x:TypeArguments="Thickness" iOS="0, 20, 0, 0" />
-    </ContentPage.Padding>
+    </ContentView.Padding>
 
     <StackLayout>
 
@@ -103,4 +103,4 @@
         </fv:FlowListView>
     </StackLayout>
 
-</ContentPage>
+</ContentView>

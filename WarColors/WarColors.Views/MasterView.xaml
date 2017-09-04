@@ -2,17 +2,18 @@
 <MasterDetailPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="WarColors.Views.MasterView"
+             xmlns:cm="clr-namespace:Caliburn.Micro.Xamarin.Forms;assembly=Caliburn.Micro.Platform.Xamarin.Forms"
              xmlns:pages="clr-namespace:WarColors.Views">
 
+    <NavigationPage.HasNavigationBar>
+        <OnPlatform x:TypeArguments="x:Boolean" WinPhone="false" Android="true" iOS="true" />
+    </NavigationPage.HasNavigationBar>
+    
     <MasterDetailPage.Master>
         <pages:ColumnMasterView x:Name="MasterPage" />
     </MasterDetailPage.Master>
 
     <MasterDetailPage.Detail>
-        <NavigationPage>
-            <x:Arguments>
-                <pages:MainView />
-            </x:Arguments>
-        </NavigationPage>
+        <ContentPage cm:View.Model="{Binding ActiveItem}" Title="{Binding Title}" />
     </MasterDetailPage.Detail>
 </MasterDetailPage>

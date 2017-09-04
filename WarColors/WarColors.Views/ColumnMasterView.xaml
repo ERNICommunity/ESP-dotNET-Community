@@ -2,13 +2,17 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="WarColors.Views.ColumnMasterView"
-             Title="Master">
+             xmlns:b="clr-namespace:Xamarin.Forms.BehaviorsPack;assembly=Xamarin.Forms.BehaviorsPack"
+             Title="WarColors">
     <StackLayout>
         <ListView x:Name="MenuItemsListView"
               SeparatorVisibility="None"
               HasUnevenRows="true"
               ItemsSource="{Binding MenuItems}">
-            <ListView.Header>
+            <ListView.Behaviors>
+                <b:EventToCommandBehavior EventName="ItemTapped" Command="{Binding ItemTapped}" EventArgsPropertyPath="Item" />
+            </ListView.Behaviors>
+            <!--<ListView.Header>
                 <Grid BackgroundColor="#03A9F4">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="10"/>
@@ -27,15 +31,12 @@
               Text="WarColors"
               Style="{DynamicResource SubtitleStyle}"/>
                 </Grid>
-            </ListView.Header>
+            </ListView.Header>-->
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
                         <StackLayout Padding="15,10" HorizontalOptions="FillAndExpand">
-                            <Label VerticalOptions="FillAndExpand" 
-                        VerticalTextAlignment="Center" 
-                        Text="{Binding Title}" 
-                        FontSize="24"/>
+                            <Label VerticalOptions="FillAndExpand" VerticalTextAlignment="Center" Text="{Binding Title}" FontSize="24"/>
                         </StackLayout>
                     </ViewCell>
                 </DataTemplate>

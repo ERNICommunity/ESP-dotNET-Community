@@ -1,15 +1,18 @@
-﻿using Caliburn.Micro;
-using Caliburn.Micro.Xamarin.Forms;
-using System;
-using WarColors.ViewModels;
-using Xamarin.Forms;
+﻿using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
 namespace WarColors.Views
 {
+    /// <summary>
+    /// The MasterView class.
+    /// </summary>
+    /// <seealso cref="Xamarin.Forms.MasterDetailPage" />
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class MasterView : MasterDetailPage
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="MasterView"/> class.
+        /// </summary>
         public MasterView()
         {
             InitializeComponent();
@@ -17,19 +20,14 @@ namespace WarColors.Views
             ColumnMasterView.ListView.ItemSelected += ViewCellTapped;
         }
 
-        private void ViewCellTapped(object sender, EventArgs e)
+        private void ViewCellTapped(object sender, SelectedItemChangedEventArgs e)
         {
-            if (ColumnMasterView.ListView.SelectedItem != null)
+            if (Device.RuntimePlatform != Device.Windows)
             {
-                var vm = IoC.Get<ProjectListViewModel>();
-
-                var page = ViewLocator.LocateForModel(vm, null, null) as Page;
-                page.BindingContext = vm;
-                (Detail as NavigationPage).PushAsync(page);
-
-                ColumnMasterView.ListView.SelectedItem = null;
                 IsPresented = false;
             }
+
+            ColumnMasterView.ListView.SelectedItem = null;
         }
     }
 }

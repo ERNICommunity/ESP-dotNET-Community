@@ -25,8 +25,8 @@ namespace WarColors
 
             Initialize();
 
-            //DisplayRootView<Views.ProjectListView>();
-            DisplayRootViewFor<ProjectListViewModel>();
+            DisplayRootView<MasterView>();
+            //DisplayRootViewFor<ProjectListViewModel>();
         }
 
         private void RegisterServices()

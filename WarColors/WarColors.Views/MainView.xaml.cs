@@ -10,8 +10,8 @@ using Xamarin.Forms.Xaml;
 namespace WarColors.Views
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class MainView : ContentPage
-	{
+	public partial class MainView : ContentView
+    {
 		public MainView()
 		{
 			InitializeComponent ();
