@@ -17,17 +17,23 @@ namespace WarColors.Views
         {
             InitializeComponent();
 
+            Title = "WarColors";
             ColumnMasterView.ListView.ItemSelected += ViewCellTapped;
         }
 
         private void ViewCellTapped(object sender, SelectedItemChangedEventArgs e)
         {
-            if (Device.RuntimePlatform != Device.Windows)
+            if (ColumnMasterView.ListView.SelectedItem != null)
             {
-                IsPresented = false;
-            }
+                if (Device.RuntimePlatform != Device.Windows)
+                {
+                    IsPresented = false;
+                }
 
-            ColumnMasterView.ListView.SelectedItem = null;
+                Title = ColumnMasterView.ListView.SelectedItem.ToString();
+
+                ColumnMasterView.ListView.SelectedItem = null;
+            }
         }
     }
 }

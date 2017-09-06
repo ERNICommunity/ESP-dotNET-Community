@@ -35,6 +35,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="ColorsView.xaml.cs">
+      <DependentUpon>ColorsView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\CardView.cs" />
     <Compile Include="CustomViews\ApplicationHeader.xaml.cs">
       <DependentUpon>ApplicationHeader.xaml</DependentUpon>
@@ -97,7 +100,12 @@
       <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="ColorsView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="MainView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>

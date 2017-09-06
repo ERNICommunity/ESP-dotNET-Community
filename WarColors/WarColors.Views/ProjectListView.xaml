@@ -12,12 +12,6 @@
 
     <StackLayout>
 
-        <!-- Custom Header -->
-        <StackLayout BackgroundColor="DeepSkyBlue" Padding="10, 10, 10, 10">
-            <cviews:ApplicationHeader />
-        </StackLayout>
-
-
         <fv:FlowListView x:Name="flowListView" SeparatorVisibility="None" HasUnevenRows="True" FlowColumnMinWidth="185" 
                          IsGroupingEnabled="True" FlowGroupDisplayBinding="{Binding Title}"
                          FlowItemsSource="{Binding Projects}" Margin="10">

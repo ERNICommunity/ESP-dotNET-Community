@@ -26,7 +26,7 @@ namespace WarColors.ViewModels
 
             MenuItems = new ObservableCollection<MasterViewMenuItem>
             {
-                    new MasterViewMenuItem { Id = 0, Title = "Color Palette", TargetType = typeof(MainViewModel) },
+                    new MasterViewMenuItem { Id = 0, Title = "Color Palette", TargetType = typeof(ColorsViewModel) },
                     new MasterViewMenuItem { Id = 1, Title = "Projects", TargetType = typeof(ProjectListViewModel) }
             };
 
