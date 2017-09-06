@@ -1,4 +1,6 @@
-﻿namespace WarColors.Models
+﻿using System;
+
+namespace WarColors.Models
 {
     /// <summary>
     /// An Item of the project.
@@ -17,5 +19,13 @@
         /// Gets or sets the title.
         /// </summary>
         public string Title { get; set; }
+
+        /// <summary>
+        /// Gets or sets the type of the target.
+        /// </summary>
+        /// <value>
+        /// The type of the target.
+        /// </value>
+        public Type TargetType { get; set; }
     }
 }

@@ -14,12 +14,13 @@
 
         <fv:FlowListView x:Name="flowListView" SeparatorVisibility="None" HasUnevenRows="True" FlowColumnMinWidth="185" 
                          IsGroupingEnabled="True" FlowGroupDisplayBinding="{Binding Title}"
-                         FlowItemsSource="{Binding Projects}" Margin="10">
+                         FlowItemsSource="{Binding Projects}" Margin="10"
+                         FlowItemTappedCommand="{Binding ProjectTapped}">
 
             <fv:FlowListView.GroupHeaderTemplate>
                 <DataTemplate>
                     <ViewCell>
-                        <StackLayout BackgroundColor="CadetBlue">
+                        <StackLayout BackgroundColor="CadetBlue" Padding="5, 15, 0, 15">
                             <Grid>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="6*" />
@@ -30,28 +31,20 @@
                                     <RowDefinition Height="Auto" />
                                 </Grid.RowDefinitions>
                                 
-                                <Frame Grid.Column="0" HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand" BackgroundColor="CadetBlue">
-                                    <Label Text="{Binding Path=Key}" Font="Bold, 22" TextColor="White" />
-                                </Frame>
+                                <Label Text="{Binding Path=Key}" Font="Bold, 22" TextColor="White" Grid.Column="0" HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand" BackgroundColor="CadetBlue"/>
 
-                                <StackLayout HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand" Grid.Column="1">
-                                    <Button HorizontalOptions="Fill" VerticalOptions="Fill" BackgroundColor="CadetBlue">
-                                        <Button.Image>
-                                            <OnPlatform x:TypeArguments="FileImageSource" iOS="editImageWhite.png" Android="editImageWhite.png" WinPhone="Images/editImageWhite.png" />
-                                        </Button.Image>
-                                    </Button>
-                                </StackLayout>
-                                
-                                <StackLayout HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand" Grid.Column="2">
-                                    <Button HorizontalOptions="Fill" VerticalOptions="Fill" BackgroundColor="CadetBlue">
-                                        <Button.Image>
-                                            <OnPlatform x:TypeArguments="FileImageSource" iOS="deleteImageWhite.png" Android="deleteImageWhite.png" WinPhone="Images/deleteImageWhite.png" />
-                                        </Button.Image>
-                                    </Button>
-                                </StackLayout>
-                                
+                                <Image HorizontalOptions="Fill" VerticalOptions="Fill" BackgroundColor="CadetBlue" Grid.Column="1">
+                                    <Image.Source>
+                                        <OnPlatform x:TypeArguments="ImageSource" iOS="editImageWhite.png" Android="editImageWhite.png" WinPhone="Images/editImageWhite.png" />
+                                    </Image.Source>
+                                </Image>
+
+                                <Image HorizontalOptions="Fill" VerticalOptions="Fill" BackgroundColor="CadetBlue" Grid.Column="2">
+                                    <Image.Source>
+                                        <OnPlatform x:TypeArguments="ImageSource" iOS="deleteImageWhite.png" Android="deleteImageWhite.png" WinPhone="Images/deleteImageWhite.png" />
+                                    </Image.Source>
+                                </Image>
                             </Grid>
-
                         </StackLayout>
                     </ViewCell>
                 </DataTemplate>
@@ -59,15 +52,18 @@
 
             <fv:FlowListView.FlowColumnTemplate>
                 <DataTemplate>
-                    <cv:CardView Margin="5" HeightRequest="230">
+                    <cv:CardView Margin="5" HeightRequest="200">
                         <StackLayout>
 
-                            <Button BackgroundColor="Transparent">
-                                <Button.Image>
-                                    <OnPlatform x:TypeArguments="FileImageSource" iOS="defaultImage.png" Android="defaultImage.png" WinPhone="Images/defaultImage.png" />
-                                </Button.Image>
-                            </Button>
-                            <Grid>
+                            <Image BackgroundColor="Transparent">
+                                <Image.Source>
+                                    <OnPlatform x:TypeArguments="ImageSource" iOS="defaultImage.png" Android="defaultImage.png" WinPhone="Images/defaultImage.png" />
+                                </Image.Source>
+                            </Image>
+
+                            <Label Margin="5" Text="{Binding Title}" HorizontalTextAlignment="Center"  VerticalTextAlignment="Center" Font="Bold, 18"/>
+                            
+                            <!--<Grid>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="90" />
                                     <ColumnDefinition Width="39" />
@@ -78,17 +74,18 @@
                                 </Grid.RowDefinitions>
 
                                 <Label Text="{Binding Title}" HorizontalTextAlignment="Center"  VerticalTextAlignment="Center" />
-                                <Button Grid.Column="1" HorizontalOptions="Fill" VerticalOptions="Fill" BackgroundColor="Transparent">
-                                    <Button.Image>
-                                        <OnPlatform x:TypeArguments="FileImageSource" iOS="editImage.png" Android="editImage.png" WinPhone="Images/editImage.png" />
-                                    </Button.Image>
-                                </Button>
-                                <Button Grid.Column="2" HorizontalOptions="Fill" VerticalOptions="Fill" BackgroundColor="Transparent">
-                                    <Button.Image>
-                                        <OnPlatform x:TypeArguments="FileImageSource" iOS="deleteImage.png" Android="deleteImage.png" WinPhone="Images/deleteImage.png" />
-                                    </Button.Image>
-                                </Button>
-                            </Grid>
+                                
+                                <Image Grid.Column="1" BackgroundColor="Transparent">
+                                    <Image.Source>
+                                        <OnPlatform x:TypeArguments="ImageSource" iOS="editImage.png" Android="editImage.png" WinPhone="Images/editImage.png" />
+                                    </Image.Source>
+                                </Image>
+                                <Image Grid.Column="2" BackgroundColor="Transparent">
+                                    <Image.Source>
+                                        <OnPlatform x:TypeArguments="ImageSource" iOS="deleteImage.png" Android="deleteImage.png" WinPhone="Images/deleteImage.png" />
+                                    </Image.Source>
+                                </Image>
+                            </Grid>-->
 
                         </StackLayout>
                     </cv:CardView>

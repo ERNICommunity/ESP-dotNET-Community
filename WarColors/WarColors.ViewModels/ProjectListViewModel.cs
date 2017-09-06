@@ -3,25 +3,30 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 using WarColors.Core.Injection;
 using WarColors.Data;
 using WarColors.Data.Repositories;
 using WarColors.Models;
+using Xamarin.Forms;
 
 namespace WarColors.ViewModels
 {
+    /// <summary>
+    /// The ProjectListViewModel class.
+    /// </summary>
+    /// <seealso cref="WarColors.ViewModels.ViewModelBase" />
     public class ProjectListViewModel : ViewModelBase
     {
         private ObservableCollection<Project> projects;
         private IFactory<IProjectRepository> projectFactoryRepository;
+        private IEventAggregator eventAggregator;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ProjectViewModel"/> class.
         /// </summary>
-        public ProjectListViewModel(IFactory<IProjectRepository> projectFactoryRepository)
+        public ProjectListViewModel(IFactory<IProjectRepository> projectFactoryRepository, IEventAggregator eventAggregator)
         {
             var sd = IoC.Get<ISeedDatabase>();
             sd.SeedAsync(true).ContinueWith(result =>
@@ -30,6 +35,9 @@ namespace WarColors.ViewModels
 
                 LoadProjects().ContinueWith(r => { });
             });
+
+            this.eventAggregator = eventAggregator;
+            ProjectTapped = new Command<ItemProject>(OnProjectTapped);
         }
 
         /// <summary>
@@ -42,6 +50,20 @@ namespace WarColors.ViewModels
         {
             get => projects;
             set => SetField(ref projects, value);
+        }
+
+        /// <summary>
+        /// Gets the project tapped.
+        /// </summary>
+        /// <value>
+        /// The project tapped.
+        /// </value>
+        public ICommand ProjectTapped { get; private set; }
+
+        private void OnProjectTapped(ItemProject item)
+        {
+            eventAggregator.PublishOnUIThreadAsync(new NavigationMessage(item.TargetType));
+            eventAggregator.PublishOnUIThreadAsync(item);
         }
 
         private async Task LoadProjects()
@@ -58,7 +80,7 @@ namespace WarColors.ViewModels
                         var project = new Project(p.Title);
                         foreach (var m in p.Models)
                         {
-                            project.Add(new ItemProject { Title = m.Name });
+                            project.Add(new ItemProject { Title = m.Name, TargetType = typeof(ProjectViewModel) });
                         }
                         result.Add(project);
                     }
