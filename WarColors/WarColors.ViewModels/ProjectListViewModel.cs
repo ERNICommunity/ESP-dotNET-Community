@@ -32,6 +32,18 @@ namespace WarColors.ViewModels
             });
         }
 
+        /// <summary>
+        /// Gets or sets the observable collection item project.
+        /// </summary>
+        /// <value>
+        /// The observable collection item project.
+        /// </value>
+        public ObservableCollection<Project> Projects
+        {
+            get => projects;
+            set => SetField(ref projects, value);
+        }
+
         private async Task LoadProjects()
         {
             using (var projectRepository = projectFactoryRepository.Get())
@@ -58,18 +70,6 @@ namespace WarColors.ViewModels
                     Debug.WriteLine(e);
                 }
             }
-        }
-
-        /// <summary>
-        /// Gets or sets the observable collection item project.
-        /// </summary>
-        /// <value>
-        /// The observable collection item project.
-        /// </value>
-        public ObservableCollection<Project> Projects
-        {
-            get => projects;
-            set => SetField(ref projects, value);
         }
     }
 }

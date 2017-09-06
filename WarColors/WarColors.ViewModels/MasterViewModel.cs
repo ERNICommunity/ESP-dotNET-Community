@@ -2,6 +2,7 @@
 using System.Collections.ObjectModel;
 using System.Windows.Input;
 using WarColors.Models;
+using Xamarin.Forms;
 
 namespace WarColors.ViewModels
 {
@@ -28,6 +29,9 @@ namespace WarColors.ViewModels
                     new MasterViewMenuItem { Id = 0, Title = "Color Palette", TargetType = typeof(MainViewModel) },
                     new MasterViewMenuItem { Id = 1, Title = "Projects", TargetType = typeof(ProjectListViewModel) }
             };
+
+            ActivateItem(IoC.Get<MainViewModel>());
+            ItemTapped = new Command<MasterViewMenuItem>(OnItemTapped);
         }
 
         /// <summary>

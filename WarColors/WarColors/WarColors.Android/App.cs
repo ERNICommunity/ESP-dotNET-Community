@@ -43,7 +43,9 @@ namespace WarColors.Droid
 
             RegisterServices();
 
-            container.Singleton<Application>();
+            container
+                .Singleton<IEventAggregator, EventAggregator>()
+                .Singleton<Application>();
         }
 
         private void RegisterServices()

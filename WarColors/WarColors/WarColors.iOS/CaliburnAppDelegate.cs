@@ -27,6 +27,7 @@ namespace WarColors.iOS
             RegisterServices();
 
             container
+                .Singleton<IEventAggregator, EventAggregator>()
                 .Singleton<WarColors.Application>();
         }
 

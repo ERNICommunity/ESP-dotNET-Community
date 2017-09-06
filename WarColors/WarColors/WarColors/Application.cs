@@ -46,6 +46,9 @@ namespace WarColors
                 container
                     .PerRequest(vm.AsType());
             }
+
+            container
+                .PerRequest(typeof(MasterViewModel));
         }
 
         protected override void PrepareViewFirst(NavigationPage navigationPage)
