@@ -1,5 +1,8 @@
 ﻿namespace WarColors.Data.Entities
 {
+    /// <summary>
+    /// The PaintType enum.
+    /// </summary>
     public enum PaintType
     {
         Base,

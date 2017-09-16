@@ -1,12 +1,9 @@
-﻿using System.Collections.Generic;
-using WarColors.Data.Repositories;
-
-namespace WarColors.Data.Entities
+﻿namespace WarColors.Models
 {
     /// <summary>
-    /// The Part class.
+    /// The Piece model.
     /// </summary>
-    public class Part : IEntity<string>
+    public class Piece
     {
         /// <summary>
         /// Gets or sets the identifier.
@@ -25,19 +22,11 @@ namespace WarColors.Data.Entities
         public string Name { get; set; }
 
         /// <summary>
-        /// Gets or sets the description.
+        /// Gets or sets the color.
         /// </summary>
         /// <value>
-        /// The description.
+        /// The color.
         /// </value>
-        public string Description { get; set; }
-
-        /// <summary>
-        /// Gets or sets the techniques.
-        /// </summary>
-        /// <value>
-        /// The techniques.
-        /// </value>
-        public IList<PartTechnique> Techniques { get; set; }
+        public string Color { get; set; }
     }
 }

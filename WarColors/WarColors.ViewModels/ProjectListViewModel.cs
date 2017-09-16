@@ -24,7 +24,7 @@ namespace WarColors.ViewModels
         private IEventAggregator eventAggregator;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="ProjectViewModel"/> class.
+        /// Initializes a new instance of the <see cref="MiniViewModel"/> class.
         /// </summary>
         public ProjectListViewModel(IFactory<IProjectRepository> projectFactoryRepository, IEventAggregator eventAggregator)
         {
@@ -73,7 +73,6 @@ namespace WarColors.ViewModels
                 {
                     var items = await projectRepository.GetAllAsync();
 
-                    var i = 0;
                     var result = new List<Project>();
                     foreach (var p in items)
                     {
@@ -81,8 +80,7 @@ namespace WarColors.ViewModels
                         
                         foreach (var m in p.Models)
                         {
-                            project.Add(new ItemProject { Id = i.ToString(), Title = m.Name, TargetType = typeof(ProjectViewModel) });
-                            i++;
+                            project.Add(new ItemProject { Id = m.Id, Title = m.Name, TargetType = typeof(MiniViewModel) });
                         }
                         result.Add(project);
 

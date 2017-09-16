@@ -52,23 +52,28 @@ namespace WarColors.Data.Marcello
                                     {
                                         new Model
                                         {
-                                            Name = "Akranaut Almirant"
+                                            Id = Guid.NewGuid().ToString(), Name = "Akranaut Almirant", Description = "Lord of the Kharadrons",
+                                            Parts = new List<Part> { new Part { Name = "Part 1" }, new Part { Name = "Part 2"} }
                                         },
                                         new Model
                                         {
-                                            Name = "Arkanaut Frigate"
+                                            Id = Guid.NewGuid().ToString(), Name = "Arkanaut Frigate", Description = "Frigate of the Karadrons",
+                                            Parts = new List<Part> { new Part { Name = "Part 1" }, new Part { Name = "Part 2"} }
                                         },
                                         new Model
                                         {
-                                            Name = "Arkanaut Company"
+                                            Id = Guid.NewGuid().ToString(), Name = "Arkanaut Company", Description = "Basic unit of the Karadrons",
+                                            Parts = new List<Part> { new Part { Name = "Part 1" }, new Part { Name = "Part 2"} }
                                         },
                                         new Model
                                         {
-                                            Name = "Khemist"
+                                            Id = Guid.NewGuid().ToString(), Name = "Khemist", Description = "Khemist Karadron",
+                                            Parts = new List<Part> { new Part { Name = "Part 1" }, new Part { Name = "Part 2"} }
                                         },
                                         new Model
                                         {
-                                            Name = "Grunstock Gunhauler"
+                                            Id = Guid.NewGuid().ToString(), Name = "Grunstock Gunhauler", Description = "Grunstock Karadron",
+                                            Parts = new List<Part> { new Part { Name = "Part 1" }, new Part { Name = "Part 2"} }
                                         }
                                     }
                         };
@@ -84,19 +89,23 @@ namespace WarColors.Data.Marcello
                                     {
                                         new Model
                                         {
-                                            Name = "Skeleton"
+                                            Id = Guid.NewGuid().ToString(), Name = "Skeleton", Description = "Basic unit for the Skeleton army",
+                                            Parts = new List<Part> { new Part { Name = "Part 1" }, new Part { Name = "Part 2"} }
                                         },
                                         new Model
                                         {
-                                            Name = "Zombie"
+                                            Id = Guid.NewGuid().ToString(), Name = "Zombie", Description = "Basic unit for the Zombie army",
+                                            Parts = new List<Part> { new Part { Name = "Part 1" }, new Part { Name = "Part 2"} }
                                         },
                                         new Model
                                         {
-                                            Name = "Neferata"
+                                            Id = Guid.NewGuid().ToString(), Name = "Neferata", Description = "Mortach",
+                                            Parts = new List<Part> { new Part { Name = "Part 1" }, new Part { Name = "Part 2"} }
                                         },
                                         new Model
                                         {
-                                            Name = "Nagash"
+                                            Id = Guid.NewGuid().ToString(), Name = "Nagash", Description = "Lord of the undeath",
+                                            Parts = new List<Part> { new Part { Name = "Part 1" }, new Part { Name = "Part 2"} }
                                         }
                                     }
                         };
@@ -105,7 +114,8 @@ namespace WarColors.Data.Marcello
                         await projectRepository.SaveAsync(project2);
                     }
                 }
-            } catch(Exception ex)
+            }
+            catch (Exception ex)
             {
                 var x  = ex;
             }

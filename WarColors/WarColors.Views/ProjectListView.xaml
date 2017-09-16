@@ -3,7 +3,6 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:fv="clr-namespace:DLToolkit.Forms.Controls;assembly=DLToolkit.Forms.Controls.FlowListView"
              xmlns:cv="clr-namespace:WarColors.Views.Controls"  
-             xmlns:cviews="clr-namespace:WarColors.Views.CustomViews"
              x:Class="WarColors.Views.ProjectListView">
 
     <ContentView.Padding>
@@ -62,30 +61,6 @@
                             </Image>
 
                             <Label Margin="5" Text="{Binding Title}" HorizontalTextAlignment="Center"  VerticalTextAlignment="Center" Font="Bold, 18"/>
-                            
-                            <!--<Grid>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="90" />
-                                    <ColumnDefinition Width="39" />
-                                    <ColumnDefinition Width="37" />
-                                </Grid.ColumnDefinitions>
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="Auto" />
-                                </Grid.RowDefinitions>
-
-                                <Label Text="{Binding Title}" HorizontalTextAlignment="Center"  VerticalTextAlignment="Center" />
-                                
-                                <Image Grid.Column="1" BackgroundColor="Transparent">
-                                    <Image.Source>
-                                        <OnPlatform x:TypeArguments="ImageSource" iOS="editImage.png" Android="editImage.png" WinPhone="Images/editImage.png" />
-                                    </Image.Source>
-                                </Image>
-                                <Image Grid.Column="2" BackgroundColor="Transparent">
-                                    <Image.Source>
-                                        <OnPlatform x:TypeArguments="ImageSource" iOS="deleteImage.png" Android="deleteImage.png" WinPhone="Images/deleteImage.png" />
-                                    </Image.Source>
-                                </Image>
-                            </Grid>-->
 
                         </StackLayout>
                     </cv:CardView>
