@@ -1,5 +1,4 @@
-﻿using Caliburn.Micro;
-using WarColors.Models;
+﻿using WarColors.Models;
 
 namespace WarColors.ViewModels
 {
@@ -7,21 +6,10 @@ namespace WarColors.ViewModels
     /// The ProjectViewModel class.
     /// </summary>
     /// <seealso cref="WarColors.ViewModels.ViewModelBase" />
-    public class ProjectViewModel : ViewModelBase, IHandle<ItemProject>
+    public class ProjectViewModel : ViewModelBase
     {
-        private IEventAggregator eventAggregator;
         private ItemProject itemProject;
         private string title;
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="ProjectViewModel"/> class.
-        /// </summary>
-        /// <param name="eventAggregator">The event aggregator.</param>
-        public ProjectViewModel(IEventAggregator eventAggregator)
-        {
-            this.eventAggregator = eventAggregator;
-            eventAggregator.Subscribe(this);
-        }
 
         /// <summary>
         /// Gets the title.
@@ -49,11 +37,6 @@ namespace WarColors.ViewModels
                 SetField(ref itemProject, value);
                 Title = itemProject.Title;
             }
-        }
-
-        public void Handle(ItemProject message)
-        {
-            ItemProject = message;
         }
     }
 }

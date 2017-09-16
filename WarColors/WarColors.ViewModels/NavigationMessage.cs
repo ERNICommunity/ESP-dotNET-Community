@@ -18,6 +18,25 @@ namespace WarColors.ViewModels
         }
 
         /// <summary>
+        /// Initializes a new instance of the <see cref="NavigationMessage"/> class.
+        /// </summary>
+        /// <param name="targetType">Type of the target.</param>
+        /// <param name="id">The identifier.</param>
+        public NavigationMessage(Type targetType, string id)
+        {
+            Id = id;
+            TargetType = targetType;
+        }
+
+        /// <summary>
+        /// Gets the identifier.
+        /// </summary>
+        /// <value>
+        /// The identifier.
+        /// </value>
+        public string Id { get; internal set; }
+
+        /// <summary>
         /// Gets the type of the target.
         /// </summary>
         /// <value>

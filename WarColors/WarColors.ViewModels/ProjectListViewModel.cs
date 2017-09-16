@@ -62,8 +62,7 @@ namespace WarColors.ViewModels
 
         private void OnProjectTapped(ItemProject item)
         {
-            eventAggregator.PublishOnUIThreadAsync(new NavigationMessage(item.TargetType));
-            eventAggregator.PublishOnUIThreadAsync(item);
+            eventAggregator.PublishOnUIThreadAsync(new NavigationMessage(item.TargetType, item.Id));
         }
 
         private async Task LoadProjects()
@@ -74,15 +73,20 @@ namespace WarColors.ViewModels
                 {
                     var items = await projectRepository.GetAllAsync();
 
+                    var i = 0;
                     var result = new List<Project>();
                     foreach (var p in items)
                     {
                         var project = new Project(p.Title);
+                        
                         foreach (var m in p.Models)
                         {
-                            project.Add(new ItemProject { Title = m.Name, TargetType = typeof(ProjectViewModel) });
+                            project.Add(new ItemProject { Id = i.ToString(), Title = m.Name, TargetType = typeof(ProjectViewModel) });
+                            i++;
                         }
                         result.Add(project);
+
+                        
                     }
 
                     Projects = new ObservableCollection<Project>(result);

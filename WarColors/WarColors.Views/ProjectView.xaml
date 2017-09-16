@@ -7,6 +7,6 @@
     </ContentView.Padding>
 
     <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
-        <Label Text="{Binding Title}"/>
+        <Label Text="{Binding Id}"/>
     </StackLayout>
 </ContentView>

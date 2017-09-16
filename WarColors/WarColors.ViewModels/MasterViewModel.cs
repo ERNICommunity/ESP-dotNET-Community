@@ -50,7 +50,13 @@ namespace WarColors.ViewModels
         {
             if (message != null && message.TargetType != this.ActiveItem.GetType())
             {
-                var vm = IoC.GetInstance(message.TargetType, null) as IScreen;
+                var vm = IoC.GetInstance(message.TargetType, null) as ViewModelBase;
+
+                if (!string.IsNullOrEmpty(message.Id))
+                {
+                    vm.Id = message.Id;
+                }
+
                 ActivateItem(vm);
             }
         }

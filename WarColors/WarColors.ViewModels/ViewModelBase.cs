@@ -5,6 +5,14 @@ namespace WarColors.ViewModels
 {
     public class ViewModelBase : Screen
     {
+        /// <summary>
+        /// Gets or sets the identifier.
+        /// </summary>
+        /// <value>
+        /// The identifier.
+        /// </value>
+        public string Id { get; set; }
+
         protected bool SetField<T>(ref T field, T value, [CallerMemberName] string propertyName = null)
         {
             if (!object.Equals(field, value))
