@@ -53,27 +53,27 @@ namespace WarColors.Data.Marcello
                                         new Model
                                         {
                                             Id = Guid.NewGuid().ToString(), Name = "Akranaut Almirant", Description = "Lord of the Kharadrons",
-                                            Parts = new List<Part> { new Part { Name = "Part 1" }, new Part { Name = "Part 2"} }
+                                            Parts = new List<Part> { new Part { Name = "Armor" }, new Part { Name = "Weapon"} }
                                         },
                                         new Model
                                         {
                                             Id = Guid.NewGuid().ToString(), Name = "Arkanaut Frigate", Description = "Frigate of the Karadrons",
-                                            Parts = new List<Part> { new Part { Name = "Part 1" }, new Part { Name = "Part 2"} }
+                                            Parts = new List<Part> { new Part { Name = "Armor" }, new Part { Name = "Weapon"} }
                                         },
                                         new Model
                                         {
                                             Id = Guid.NewGuid().ToString(), Name = "Arkanaut Company", Description = "Basic unit of the Karadrons",
-                                            Parts = new List<Part> { new Part { Name = "Part 1" }, new Part { Name = "Part 2"} }
+                                            Parts = new List<Part> { new Part { Name = "Armor" }, new Part { Name = "Weapon"} }
                                         },
                                         new Model
                                         {
                                             Id = Guid.NewGuid().ToString(), Name = "Khemist", Description = "Khemist Karadron",
-                                            Parts = new List<Part> { new Part { Name = "Part 1" }, new Part { Name = "Part 2"} }
+                                            Parts = new List<Part> { new Part { Name = "Armor" }, new Part { Name = "Weapon"} }
                                         },
                                         new Model
                                         {
                                             Id = Guid.NewGuid().ToString(), Name = "Grunstock Gunhauler", Description = "Grunstock Karadron",
-                                            Parts = new List<Part> { new Part { Name = "Part 1" }, new Part { Name = "Part 2"} }
+                                            Parts = new List<Part> { new Part { Name = "Armor" }, new Part { Name = "Weapon"} }
                                         }
                                     }
                         };
@@ -90,22 +90,22 @@ namespace WarColors.Data.Marcello
                                         new Model
                                         {
                                             Id = Guid.NewGuid().ToString(), Name = "Skeleton", Description = "Basic unit for the Skeleton army",
-                                            Parts = new List<Part> { new Part { Name = "Part 1" }, new Part { Name = "Part 2"} }
+                                            Parts = new List<Part> { new Part { Name = "Armor" }, new Part { Name = "Weapon"} }
                                         },
                                         new Model
                                         {
                                             Id = Guid.NewGuid().ToString(), Name = "Zombie", Description = "Basic unit for the Zombie army",
-                                            Parts = new List<Part> { new Part { Name = "Part 1" }, new Part { Name = "Part 2"} }
+                                            Parts = new List<Part> { new Part { Name = "Armor" }, new Part { Name = "Weapon"} }
                                         },
                                         new Model
                                         {
                                             Id = Guid.NewGuid().ToString(), Name = "Neferata", Description = "Mortach",
-                                            Parts = new List<Part> { new Part { Name = "Part 1" }, new Part { Name = "Part 2"} }
+                                            Parts = new List<Part> { new Part { Name = "Armor" }, new Part { Name = "Weapon"} }
                                         },
                                         new Model
                                         {
                                             Id = Guid.NewGuid().ToString(), Name = "Nagash", Description = "Lord of the undeath",
-                                            Parts = new List<Part> { new Part { Name = "Part 1" }, new Part { Name = "Part 2"} }
+                                            Parts = new List<Part> { new Part { Name = "Armor" }, new Part { Name = "Weapon"} }
                                         }
                                     }
                         };

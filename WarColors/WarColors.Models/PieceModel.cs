@@ -1,9 +1,11 @@
-﻿namespace WarColors.Models
+﻿using System.Collections.ObjectModel;
+
+namespace WarColors.Models
 {
     /// <summary>
     /// The Piece model.
     /// </summary>
-    public class Piece
+    public class PieceModel : ObservableCollection<TechniqueModel>
     {
         /// <summary>
         /// Gets or sets the identifier.
@@ -20,13 +22,5 @@
         /// The name.
         /// </value>
         public string Name { get; set; }
-
-        /// <summary>
-        /// Gets or sets the color.
-        /// </summary>
-        /// <value>
-        /// The color.
-        /// </value>
-        public string Color { get; set; }
     }
 }

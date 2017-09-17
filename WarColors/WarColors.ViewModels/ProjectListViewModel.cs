@@ -19,7 +19,7 @@ namespace WarColors.ViewModels
     /// <seealso cref="WarColors.ViewModels.ViewModelBase" />
     public class ProjectListViewModel : ViewModelBase
     {
-        private ObservableCollection<Project> projects;
+        private ObservableCollection<ProjectModel> projects;
         private IFactory<IProjectRepository> projectFactoryRepository;
         private IEventAggregator eventAggregator;
 
@@ -37,7 +37,7 @@ namespace WarColors.ViewModels
             });
 
             this.eventAggregator = eventAggregator;
-            ProjectTapped = new Command<ItemProject>(OnProjectTapped);
+            ProjectTapped = new Command<ItemProjectModel>(OnProjectTapped);
         }
 
         /// <summary>
@@ -46,7 +46,7 @@ namespace WarColors.ViewModels
         /// <value>
         /// The observable collection item project.
         /// </value>
-        public ObservableCollection<Project> Projects
+        public ObservableCollection<ProjectModel> Projects
         {
             get => projects;
             set => SetField(ref projects, value);
@@ -60,7 +60,7 @@ namespace WarColors.ViewModels
         /// </value>
         public ICommand ProjectTapped { get; private set; }
 
-        private void OnProjectTapped(ItemProject item)
+        private void OnProjectTapped(ItemProjectModel item)
         {
             eventAggregator.PublishOnUIThreadAsync(new NavigationMessage(item.TargetType, item.Id));
         }
@@ -73,21 +73,21 @@ namespace WarColors.ViewModels
                 {
                     var items = await projectRepository.GetAllAsync();
 
-                    var result = new List<Project>();
+                    var result = new List<ProjectModel>();
                     foreach (var p in items)
                     {
-                        var project = new Project(p.Title);
+                        var project = new ProjectModel(p.Title);
                         
                         foreach (var m in p.Models)
                         {
-                            project.Add(new ItemProject { Id = m.Id, Title = m.Name, TargetType = typeof(MiniViewModel) });
+                            project.Add(new ItemProjectModel { Id = m.Id, Title = m.Name, TargetType = typeof(MiniViewModel) });
                         }
                         result.Add(project);
 
                         
                     }
 
-                    Projects = new ObservableCollection<Project>(result);
+                    Projects = new ObservableCollection<ProjectModel>(result);
                 }
                 catch (Exception e)
                 {

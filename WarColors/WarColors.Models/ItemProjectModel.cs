@@ -1,11 +1,12 @@
 ﻿using System;
+using System.Collections.ObjectModel;
 
 namespace WarColors.Models
 {
     /// <summary>
-    /// The MasterViewMenuItem class.
+    /// An Item of the project.
     /// </summary>
-    public class MasterViewMenuItem
+    public class ItemProjectModel : ObservableCollection<PieceModel>
     {
         /// <summary>
         /// Gets or sets the identifier.
@@ -13,15 +14,20 @@ namespace WarColors.Models
         /// <value>
         /// The identifier.
         /// </value>
-        public int Id { get; set; }
+        public string Id { get; set; }
 
         /// <summary>
         /// Gets or sets the title.
         /// </summary>
-        /// <value>
-        /// The title.
-        /// </value>
         public string Title { get; set; }
+
+        /// <summary>
+        /// Gets or sets the description.
+        /// </summary>
+        /// <value>
+        /// The description.
+        /// </value>
+        public string Description { get; set; }
 
         /// <summary>
         /// Gets or sets the type of the target.
@@ -30,16 +36,5 @@ namespace WarColors.Models
         /// The type of the target.
         /// </value>
         public Type TargetType { get; set; }
-
-        /// <summary>
-        /// Returns a <see cref="System.String" /> that represents this instance.
-        /// </summary>
-        /// <returns>
-        /// A <see cref="System.String" /> that represents this instance.
-        /// </returns>
-        public override string ToString()
-        {
-            return Title;
-        }
     }
 }

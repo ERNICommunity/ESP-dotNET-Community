@@ -24,14 +24,14 @@ namespace WarColors.ViewModels
             this.eventAggregator = eventAggregator;
             eventAggregator.Subscribe(this);
 
-            MenuItems = new ObservableCollection<MasterViewMenuItem>
+            MenuItems = new ObservableCollection<MasterViewMenuItemModel>
             {
-                    new MasterViewMenuItem { Id = 0, Title = "Color Palette", TargetType = typeof(ColorsViewModel) },
-                    new MasterViewMenuItem { Id = 1, Title = "Projects", TargetType = typeof(ProjectListViewModel) }
+                    new MasterViewMenuItemModel { Id = 0, Title = "Color Palette", TargetType = typeof(ColorsViewModel) },
+                    new MasterViewMenuItemModel { Id = 1, Title = "Projects", TargetType = typeof(ProjectListViewModel) }
             };
 
             ActivateItem(IoC.Get<MainViewModel>());
-            ItemTapped = new Command<MasterViewMenuItem>(OnItemTapped);
+            ItemTapped = new Command<MasterViewMenuItemModel>(OnItemTapped);
         }
 
         /// <summary>
@@ -40,7 +40,7 @@ namespace WarColors.ViewModels
         /// <value>
         /// The menu items.
         /// </value>
-        public ObservableCollection<MasterViewMenuItem> MenuItems { get; set; }
+        public ObservableCollection<MasterViewMenuItemModel> MenuItems { get; set; }
 
         /// <summary>
         /// Handles the message.
@@ -69,7 +69,7 @@ namespace WarColors.ViewModels
         /// </value>
         public ICommand ItemTapped { get; private set; }
 
-        private void OnItemTapped(MasterViewMenuItem item)
+        private void OnItemTapped(MasterViewMenuItemModel item)
         {
             eventAggregator.PublishOnUIThreadAsync(new NavigationMessage(item.TargetType));
         }

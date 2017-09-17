@@ -4,26 +4,118 @@
              xmlns:fv="clr-namespace:DLToolkit.Forms.Controls;assembly=DLToolkit.Forms.Controls.FlowListView"
              xmlns:cv="clr-namespace:WarColors.Views.Controls"  
              x:Class="WarColors.Views.MiniView">
-    
+
     <ContentView.Padding>
         <OnPlatform x:TypeArguments="Thickness" iOS="0, 20, 0, 0" />
     </ContentView.Padding>
 
     <StackLayout>
-        <Label Text="{Binding Title}" BackgroundColor="AliceBlue" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"/>
 
-        <ListView ItemsSource="{Binding Pieces}">
-            <ListView.ItemTemplate>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <Image BackgroundColor="Transparent" Grid.Column="0" Margin="10, 10, 10, 10">
+                <Image.Source>
+                    <OnPlatform x:TypeArguments="ImageSource" iOS="backImageBlack.png" Android="backImageBlack.png" WinPhone="Images/backImageBlack.png" />
+                </Image.Source>
+            </Image>
+            
+            <Label Text="{Binding Title}" Font="Bold, 22" VerticalOptions="Center" HorizontalOptions="Center" Grid.Column="1"/>
+
+            <Image BackgroundColor="Transparent" Grid.Column="2" Margin="10, 10, 10, 10" HorizontalOptions="End">
+                <Image.Source>
+                    <OnPlatform x:TypeArguments="ImageSource" iOS="moreVertImageBlack.png" Android="moreVertImageBlack.png" WinPhone="Images/moreVertImageBlack.png" />
+                </Image.Source>
+            </Image>
+        </Grid>
+        
+        <fv:FlowListView x:Name="flowListView" SeparatorVisibility="None" HasUnevenRows="True" FlowColumnMinWidth="185" FlowColumnCount="1" 
+                         IsGroupingEnabled="True" FlowGroupDisplayBinding="{Binding Name}"
+                         FlowItemsSource="{Binding Pieces}" Margin="10">
+
+            <fv:FlowListView.Header>
+                <Label Text="Page" />
+            </fv:FlowListView.Header>
+            
+            <fv:FlowListView.HeaderTemplate>
+                <DataTemplate>
+                    <StackLayout Margin="0, 0, 0, 10">
+                        <Image BackgroundColor="Transparent">
+                            <Image.Source>
+                                <OnPlatform x:TypeArguments="ImageSource" iOS="defaultImage.png" Android="defaultImage.png" WinPhone="Images/defaultImage.png" />
+                            </Image.Source>
+                        </Image>
+                    </StackLayout>
+                </DataTemplate>
+            </fv:FlowListView.HeaderTemplate>
+
+            <fv:FlowListView.GroupHeaderTemplate>
                 <DataTemplate>
                     <ViewCell>
-                        <ViewCell.View>
-                            <StackLayout>
-                                <Label Text="{Binding Name}" />
-                            </StackLayout>
-                        </ViewCell.View>
+                        <StackLayout BackgroundColor="CadetBlue" Padding="5, 15, 0, 15">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="6*" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+
+                                <Label Text="{Binding Path=Key}" Font="Bold, 22" TextColor="White" Grid.Column="0" HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand" BackgroundColor="CadetBlue"/>
+
+                                <Image HorizontalOptions="Fill" VerticalOptions="Fill" BackgroundColor="CadetBlue" Grid.Column="1">
+                                    <Image.Source>
+                                        <OnPlatform x:TypeArguments="ImageSource" iOS="addImage.png" Android="addImage.png" WinPhone="Images/addImage.png" />
+                                    </Image.Source>
+                                </Image>
+                                
+                                <Image HorizontalOptions="Fill" VerticalOptions="Fill" BackgroundColor="CadetBlue" Grid.Column="2">
+                                    <Image.Source>
+                                        <OnPlatform x:TypeArguments="ImageSource" iOS="editImageWhite.png" Android="editImageWhite.png" WinPhone="Images/editImageWhite.png" />
+                                    </Image.Source>
+                                </Image>
+
+                                <Image HorizontalOptions="Fill" VerticalOptions="Fill" BackgroundColor="CadetBlue" Grid.Column="3">
+                                    <Image.Source>
+                                        <OnPlatform x:TypeArguments="ImageSource" iOS="deleteImageWhite.png" Android="deleteImageWhite.png" WinPhone="Images/deleteImageWhite.png" />
+                                    </Image.Source>
+                                </Image>
+                            </Grid>
+                        </StackLayout>
                     </ViewCell>
                 </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
+            </fv:FlowListView.GroupHeaderTemplate>
+
+            <fv:FlowListView.FlowColumnTemplate>
+                <DataTemplate>
+                    <StackLayout>
+                        <Grid Margin="0, 3, 0, 5">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="2*" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+
+                            <BoxView Color="Red" Grid.Column="0" />
+                            <Label Text="{Binding Color}" Grid.Column="1" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" Font="Bold, 18" />
+                            <Label Text="{Binding Technique}" Grid.Column="2" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" Font="Bold, 18" />
+                        </Grid>
+                    </StackLayout>
+                </DataTemplate>
+            </fv:FlowListView.FlowColumnTemplate>
+        </fv:FlowListView>
     </StackLayout>
 </ContentView>

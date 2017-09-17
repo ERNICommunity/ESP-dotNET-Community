@@ -17,7 +17,7 @@ namespace WarColors.ViewModels
     /// <seealso cref="WarColors.ViewModels.ViewModelBase" />
     public class MiniViewModel : ViewModelBase
     {
-        private ObservableCollection<Piece> pieces;
+        private ObservableCollection<PieceModel> pieces;
         private string title;
 
         private IFactory<IProjectRepository> projectFactoryRepository;
@@ -55,7 +55,7 @@ namespace WarColors.ViewModels
         /// <value>
         /// The pieces.
         /// </value>
-        public ObservableCollection<Piece> Pieces
+        public ObservableCollection<PieceModel> Pieces
         {
             get => pieces;
             set { SetField(ref pieces, value); }
@@ -75,16 +75,19 @@ namespace WarColors.ViewModels
                         {
                             if (model.Id == Id)
                             {
-                                var pieceList = new List<Piece>();
+                                var pieceList = new List<PieceModel>();
                                 if (model.Parts != null && model.Parts.Count > 0)
                                 {
                                     foreach (var part in model.Parts)
                                     {
-                                        var piece = new Piece { Id = "1", Color = "Red", Name = part.Name };
+                                        var piece = new PieceModel { Id = "1", Name = part.Name };
+                                        piece.Add(new TechniqueModel { Color = "Liberator Gold", Technique = "Dry" });
+                                        piece.Add(new TechniqueModel { Color = "Stormhost Silver", Technique = "Base" });
+                                        piece.Add(new TechniqueModel { Color = "Stormhost Silver", Technique = "Base" });
                                         pieceList.Add(piece);
                                     }
 
-                                    Pieces = new ObservableCollection<Piece>(pieceList);
+                                    Pieces = new ObservableCollection<PieceModel>(pieceList);
                                     Title = model.Name;
                                 }
                             }

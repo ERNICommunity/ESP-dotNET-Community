@@ -25,6 +25,7 @@
                                     <ColumnDefinition Width="6*" />
                                     <ColumnDefinition Width="*" />
                                     <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
                                 </Grid.ColumnDefinitions>
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="Auto" />
@@ -34,11 +35,17 @@
 
                                 <Image HorizontalOptions="Fill" VerticalOptions="Fill" BackgroundColor="CadetBlue" Grid.Column="1">
                                     <Image.Source>
+                                        <OnPlatform x:TypeArguments="ImageSource" iOS="addImage.png" Android="addImage.png" WinPhone="Images/addImage.png" />
+                                    </Image.Source>
+                                </Image>
+                                
+                                <Image HorizontalOptions="Fill" VerticalOptions="Fill" BackgroundColor="CadetBlue" Grid.Column="2">
+                                    <Image.Source>
                                         <OnPlatform x:TypeArguments="ImageSource" iOS="editImageWhite.png" Android="editImageWhite.png" WinPhone="Images/editImageWhite.png" />
                                     </Image.Source>
                                 </Image>
 
-                                <Image HorizontalOptions="Fill" VerticalOptions="Fill" BackgroundColor="CadetBlue" Grid.Column="2">
+                                <Image HorizontalOptions="Fill" VerticalOptions="Fill" BackgroundColor="CadetBlue" Grid.Column="3">
                                     <Image.Source>
                                         <OnPlatform x:TypeArguments="ImageSource" iOS="deleteImageWhite.png" Android="deleteImageWhite.png" WinPhone="Images/deleteImageWhite.png" />
                                     </Image.Source>

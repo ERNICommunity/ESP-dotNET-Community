@@ -5,14 +5,14 @@ namespace WarColors.Models
     /// <summary>
     /// The project class.
     /// </summary>
-    /// <seealso cref="System.Collections.ObjectModel.ObservableCollection{WarColors.Models.ItemProject}" />
-    public class Project : ObservableCollection<ItemProject>
+    /// <seealso cref="System.Collections.ObjectModel.ObservableCollection{WarColors.Models.ItemProjectModel}" />
+    public class ProjectModel : ObservableCollection<ItemProjectModel>
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="Project"/> class.
+        /// Initializes a new instance of the <see cref="ProjectModel"/> class.
         /// </summary>
         /// <param name="projectTitle">The project title.</param>
-        public Project (string projectTitle)
+        public ProjectModel (string projectTitle)
         {
             Title = projectTitle;
         }
