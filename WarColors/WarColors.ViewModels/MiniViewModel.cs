@@ -4,10 +4,12 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Threading.Tasks;
+using System.Windows.Input;
 using WarColors.Core.Injection;
 using WarColors.Data;
 using WarColors.Data.Repositories;
 using WarColors.Models;
+using Xamarin.Forms;
 
 namespace WarColors.ViewModels
 {
@@ -17,17 +19,22 @@ namespace WarColors.ViewModels
     /// <seealso cref="WarColors.ViewModels.ViewModelBase" />
     public class MiniViewModel : ViewModelBase
     {
+        private IEventAggregator eventAggregator;
         private ObservableCollection<PieceModel> pieces;
         private string title;
 
         private IFactory<IProjectRepository> projectFactoryRepository;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="MiniViewModel"/> class.
+        /// Initializes a new instance of the <see cref="MiniViewModel" /> class.
         /// </summary>
         /// <param name="projectFactoryRepository">The project factory repository.</param>
-        public MiniViewModel(IFactory<IProjectRepository> projectFactoryRepository)
+        /// <param name="eventAggregator">The event aggregator.</param>
+        public MiniViewModel(IFactory<IProjectRepository> projectFactoryRepository, IEventAggregator eventAggregator)
         {
+            this.eventAggregator = eventAggregator;
+            BackMiniTapped = new Command(OnBackMiniTapped);
+
             var sd = IoC.Get<ISeedDatabase>();
             sd.SeedAsync(false).ContinueWith(result =>
             {
@@ -61,6 +68,19 @@ namespace WarColors.ViewModels
             set { SetField(ref pieces, value); }
         }
 
+        /// <summary>
+        /// Gets the back mini tapped.
+        /// </summary>
+        /// <value>
+        /// The back mini tapped.
+        /// </value>
+        public ICommand BackMiniTapped { get; private set; }
+
+        private void OnBackMiniTapped()
+        {
+            eventAggregator.PublishOnUIThreadAsync(new NavigationMessage(typeof(ProjectListViewModel)));
+        }
+
         private async Task LoadItem()
         {
             using (var projectRepository = projectFactoryRepository.Get())
@@ -81,9 +101,9 @@ namespace WarColors.ViewModels
                                     foreach (var part in model.Parts)
                                     {
                                         var piece = new PieceModel { Id = "1", Name = part.Name };
-                                        piece.Add(new TechniqueModel { Color = "Liberator Gold", Technique = "Dry" });
-                                        piece.Add(new TechniqueModel { Color = "Stormhost Silver", Technique = "Base" });
-                                        piece.Add(new TechniqueModel { Color = "Stormhost Silver", Technique = "Base" });
+                                        piece.Add(new TechniqueModel { Color = "Red", CitadelColor = "Stormcast Gold", Technique = "Dry" });
+                                        piece.Add(new TechniqueModel { Color = "Blue", CitadelColor = "Stormhost Silver", Technique = "Base" });
+                                        piece.Add(new TechniqueModel { Color = "Black", CitadelColor = "Stormhost Silver", Technique = "Base" });
                                         pieceList.Add(piece);
                                     }
 

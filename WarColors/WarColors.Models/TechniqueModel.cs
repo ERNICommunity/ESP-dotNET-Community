@@ -11,6 +11,14 @@
         /// <value>
         /// The color.
         /// </value>
+        public string CitadelColor { get; set; }
+
+        /// <summary>
+        /// Gets or sets the color.
+        /// </summary>
+        /// <value>
+        /// The color.
+        /// </value>
         public string Color { get; set; }
 
         /// <summary>

@@ -12,26 +12,7 @@
             <ListView.Behaviors>
                 <b:EventToCommandBehavior EventName="ItemTapped" Command="{Binding ItemTapped}" EventArgsPropertyPath="Item" />
             </ListView.Behaviors>
-            <!--<ListView.Header>
-                <Grid BackgroundColor="#03A9F4">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="10"/>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="10"/>
-                    </Grid.ColumnDefinitions>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="5"/>
-                        <RowDefinition Height="10"/>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="10"/>
-                    </Grid.RowDefinitions>
-                    <Label
-              Grid.Column="1"
-              Grid.Row="2"
-              Text="WarColors"
-              Style="{DynamicResource SubtitleStyle}"/>
-                </Grid>
-            </ListView.Header>-->
+
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>

@@ -108,6 +108,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Images\addImage.png" />
+    <Content Include="Images\addImageBlack.png" />
     <Content Include="Images\backImageBlack.png" />
     <Content Include="Images\defaultImage.png" />
     <Content Include="Images\deleteImage.png" />

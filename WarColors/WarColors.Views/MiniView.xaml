@@ -1,6 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:b="clr-namespace:Xamarin.Forms.BehaviorsPack;assembly=Xamarin.Forms.BehaviorsPack"
              xmlns:fv="clr-namespace:DLToolkit.Forms.Controls;assembly=DLToolkit.Forms.Controls.FlowListView"
              xmlns:cv="clr-namespace:WarColors.Views.Controls"  
              x:Class="WarColors.Views.MiniView">
@@ -25,6 +26,9 @@
                 <Image.Source>
                     <OnPlatform x:TypeArguments="ImageSource" iOS="backImageBlack.png" Android="backImageBlack.png" WinPhone="Images/backImageBlack.png" />
                 </Image.Source>
+                <!--<Image.Behaviors>
+                    <b:EventToCommandBehavior EventName="BackMiniTapped" Command="{Binding BackMiniTapped}" EventArgsPropertyPath="Item"/>
+                </Image.Behaviors>-->
             </Image>
             
             <Label Text="{Binding Title}" Font="Bold, 22" VerticalOptions="Center" HorizontalOptions="Center" Grid.Column="1"/>
@@ -47,7 +51,7 @@
             <fv:FlowListView.HeaderTemplate>
                 <DataTemplate>
                     <StackLayout Margin="0, 0, 0, 10">
-                        <Image BackgroundColor="Transparent">
+                        <Image BackgroundColor="Transparent" HorizontalOptions="Center">
                             <Image.Source>
                                 <OnPlatform x:TypeArguments="ImageSource" iOS="defaultImage.png" Android="defaultImage.png" WinPhone="Images/defaultImage.png" />
                             </Image.Source>
@@ -109,8 +113,8 @@
                                 <RowDefinition Height="Auto" />
                             </Grid.RowDefinitions>
 
-                            <BoxView Color="Red" Grid.Column="0" />
-                            <Label Text="{Binding Color}" Grid.Column="1" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" Font="Bold, 18" />
+                            <BoxView Color="{Binding Color}" Grid.Column="0" />
+                            <Label Text="{Binding CitadelColor}" Grid.Column="1" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" Font="Bold, 18" />
                             <Label Text="{Binding Technique}" Grid.Column="2" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" Font="Bold, 18" />
                         </Grid>
                     </StackLayout>
