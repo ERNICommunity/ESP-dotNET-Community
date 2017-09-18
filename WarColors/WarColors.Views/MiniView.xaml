@@ -26,9 +26,9 @@
                 <Image.Source>
                     <OnPlatform x:TypeArguments="ImageSource" iOS="backImageBlack.png" Android="backImageBlack.png" WinPhone="Images/backImageBlack.png" />
                 </Image.Source>
-                <!--<Image.Behaviors>
-                    <b:EventToCommandBehavior EventName="BackMiniTapped" Command="{Binding BackMiniTapped}" EventArgsPropertyPath="Item"/>
-                </Image.Behaviors>-->
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding BackMiniTapped}" />
+                </Image.GestureRecognizers>
             </Image>
             
             <Label Text="{Binding Title}" Font="Bold, 22" VerticalOptions="Center" HorizontalOptions="Center" Grid.Column="1"/>
