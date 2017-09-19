@@ -53,27 +53,27 @@ namespace WarColors.Data.Marcello
                                         new Model
                                         {
                                             Id = Guid.NewGuid().ToString(), Name = "Akranaut Almirant", Description = "Lord of the Kharadrons",
-                                            Parts = new List<Part> { new Part { Name = "Armor" }, new Part { Name = "Weapon"} }
+                                            Parts = new List<Part> { new Part {Id = Guid.NewGuid().ToString(), Name = "Armor" }, new Part { Id = Guid.NewGuid().ToString(), Name = "Weapon"} }
                                         },
                                         new Model
                                         {
                                             Id = Guid.NewGuid().ToString(), Name = "Arkanaut Frigate", Description = "Frigate of the Karadrons",
-                                            Parts = new List<Part> { new Part { Name = "Armor" }, new Part { Name = "Weapon"} }
+                                            Parts = new List<Part> { new Part { Id = Guid.NewGuid().ToString(), Name = "Armor" }, new Part { Id = Guid.NewGuid().ToString(), Name = "Weapon"} }
                                         },
                                         new Model
                                         {
                                             Id = Guid.NewGuid().ToString(), Name = "Arkanaut Company", Description = "Basic unit of the Karadrons",
-                                            Parts = new List<Part> { new Part { Name = "Armor" }, new Part { Name = "Weapon"} }
+                                            Parts = new List<Part> { new Part { Id = Guid.NewGuid().ToString(), Name = "Armor" }, new Part { Id = Guid.NewGuid().ToString(), Name = "Weapon"} }
                                         },
                                         new Model
                                         {
                                             Id = Guid.NewGuid().ToString(), Name = "Khemist", Description = "Khemist Karadron",
-                                            Parts = new List<Part> { new Part { Name = "Armor" }, new Part { Name = "Weapon"} }
+                                            Parts = new List<Part> { new Part { Id = Guid.NewGuid().ToString(), Name = "Armor" }, new Part { Id = Guid.NewGuid().ToString(), Name = "Weapon"} }
                                         },
                                         new Model
                                         {
                                             Id = Guid.NewGuid().ToString(), Name = "Grunstock Gunhauler", Description = "Grunstock Karadron",
-                                            Parts = new List<Part> { new Part { Name = "Armor" }, new Part { Name = "Weapon"} }
+                                            Parts = new List<Part> { new Part { Id = Guid.NewGuid().ToString(), Name = "Armor" }, new Part { Id = Guid.NewGuid().ToString(), Name = "Weapon"} }
                                         }
                                     }
                         };
@@ -90,28 +90,61 @@ namespace WarColors.Data.Marcello
                                         new Model
                                         {
                                             Id = Guid.NewGuid().ToString(), Name = "Skeleton", Description = "Basic unit for the Skeleton army",
-                                            Parts = new List<Part> { new Part { Name = "Armor" }, new Part { Name = "Weapon"} }
+                                            Parts = new List<Part> { new Part { Id = Guid.NewGuid().ToString(), Name = "Armor" }, new Part { Id = Guid.NewGuid().ToString(), Name = "Weapon"} }
                                         },
                                         new Model
                                         {
                                             Id = Guid.NewGuid().ToString(), Name = "Zombie", Description = "Basic unit for the Zombie army",
-                                            Parts = new List<Part> { new Part { Name = "Armor" }, new Part { Name = "Weapon"} }
+                                            Parts = new List<Part> { new Part { Id = Guid.NewGuid().ToString(), Name = "Armor" }, new Part { Id = Guid.NewGuid().ToString(), Name = "Weapon"} }
                                         },
                                         new Model
                                         {
                                             Id = Guid.NewGuid().ToString(), Name = "Neferata", Description = "Mortach",
-                                            Parts = new List<Part> { new Part { Name = "Armor" }, new Part { Name = "Weapon"} }
+                                            Parts = new List<Part> { new Part { Id = Guid.NewGuid().ToString(), Name = "Armor" }, new Part { Id = Guid.NewGuid().ToString(), Name = "Weapon"} }
                                         },
                                         new Model
                                         {
                                             Id = Guid.NewGuid().ToString(), Name = "Nagash", Description = "Lord of the undeath",
-                                            Parts = new List<Part> { new Part { Name = "Armor" }, new Part { Name = "Weapon"} }
+                                            Parts = new List<Part> { new Part { Id = Guid.NewGuid().ToString(), Name = "Armor" }, new Part { Id = Guid.NewGuid().ToString(), Name = "Weapon"} }
+                                        }
+                                    }
+                        };
+
+                        var project3 = new Project()
+                        {
+                            Id = Guid.NewGuid().ToString(),
+                            Title = "Death Batallion 2",
+                            Description = "Armies on Parade",
+                            Creator = "Diego",
+                            Created = DateTime.Now,
+                            Models = new List<Model>()
+                                    {
+                                        new Model
+                                        {
+                                            Id = Guid.NewGuid().ToString(), Name = "Skeleton", Description = "Basic unit for the Skeleton army",
+                                            Parts = new List<Part> { new Part { Id = Guid.NewGuid().ToString(), Name = "Armor" }, new Part { Id = Guid.NewGuid().ToString(), Name = "Weapon"} }
+                                        },
+                                        new Model
+                                        {
+                                            Id = Guid.NewGuid().ToString(), Name = "Zombie", Description = "Basic unit for the Zombie army",
+                                            Parts = new List<Part> { new Part { Id = Guid.NewGuid().ToString(), Name = "Armor" }, new Part { Id = Guid.NewGuid().ToString(), Name = "Weapon"} }
+                                        },
+                                        new Model
+                                        {
+                                            Id = Guid.NewGuid().ToString(), Name = "Neferata", Description = "Mortach",
+                                            Parts = new List<Part> { new Part { Id = Guid.NewGuid().ToString(), Name = "Armor" }, new Part { Id = Guid.NewGuid().ToString(), Name = "Weapon"} }
+                                        },
+                                        new Model
+                                        {
+                                            Id = Guid.NewGuid().ToString(), Name = "Nagash", Description = "Lord of the undeath",
+                                            Parts = new List<Part> { new Part { Id = Guid.NewGuid().ToString(), Name = "Armor" }, new Part { Id = Guid.NewGuid().ToString(), Name = "Weapon"} }
                                         }
                                     }
                         };
 
                         await projectRepository.SaveAsync(project);
                         await projectRepository.SaveAsync(project2);
+                        await projectRepository.SaveAsync(project3);
                     }
                 }
             }

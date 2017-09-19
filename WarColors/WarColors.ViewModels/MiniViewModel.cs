@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using WarColors.Core.Injection;
@@ -32,9 +33,6 @@ namespace WarColors.ViewModels
         /// <param name="eventAggregator">The event aggregator.</param>
         public MiniViewModel(IFactory<IProjectRepository> projectFactoryRepository, IEventAggregator eventAggregator)
         {
-            this.eventAggregator = eventAggregator;
-            BackMiniTapped = new Command(OnBackMiniTapped);
-
             var sd = IoC.Get<ISeedDatabase>();
             sd.SeedAsync(false).ContinueWith(result =>
             {
@@ -42,6 +40,10 @@ namespace WarColors.ViewModels
 
                 LoadItem().ContinueWith(r => { });
             });
+
+            this.eventAggregator = eventAggregator;
+            BackMiniTapped = new Command(OnBackMiniTapped);
+            RemovePieceTapped = new Command<string>(OnRemovePieceTapped);
         }
 
         /// <summary>
@@ -76,9 +78,56 @@ namespace WarColors.ViewModels
         /// </value>
         public ICommand BackMiniTapped { get; private set; }
 
+        /// <summary>
+        /// Gets the remove mini tapped.
+        /// </summary>
+        /// <value>
+        /// The remove mini tapped.
+        /// </value>
+        public ICommand RemovePieceTapped { get; private set; }
+
         private void OnBackMiniTapped()
         {
             eventAggregator.PublishOnUIThreadAsync(new NavigationMessage(typeof(ProjectListViewModel)));
+        }
+
+        private void OnRemovePieceTapped(string piece)
+        {
+            var mini = Pieces.FirstOrDefault(p => p.Name == piece);
+
+            // Remove from Database.
+            RemovePiece(mini.Id).ContinueWith(result => { });
+
+            Pieces.Remove(mini);
+
+            // Needed to update the Collection properly.
+            Pieces = new ObservableCollection<PieceModel>(Pieces);
+        }
+
+        private async Task RemovePiece(string id)
+        {
+            // TODO - Improve the Remove.
+
+            //using (var projectRepository = projectFactoryRepository.Get())
+            //{
+            //    var projects = await projectRepository.GetAllAsync();
+
+            //    Project item = null;
+            //    foreach (var project in projects)
+            //    {
+            //        foreach (var model in project.Models)
+            //        {
+            //            foreach (var piece in model.Parts)
+            //            {
+            //                if (piece.Id == id)
+            //                {
+            //                    item = project;
+            //                    item.Models.
+            //                }
+            //            }
+            //        }
+            //    }
+            //}
         }
 
         private async Task LoadItem()
@@ -100,7 +149,7 @@ namespace WarColors.ViewModels
                                 {
                                     foreach (var part in model.Parts)
                                     {
-                                        var piece = new PieceModel { Id = "1", Name = part.Name };
+                                        var piece = new PieceModel { Id = part.Id, Name = part.Name };
                                         piece.Add(new TechniqueModel { Color = "Red", CitadelColor = "Stormcast Gold", Technique = "Dry" });
                                         piece.Add(new TechniqueModel { Color = "Blue", CitadelColor = "Stormhost Silver", Technique = "Base" });
                                         piece.Add(new TechniqueModel { Color = "Black", CitadelColor = "Stormhost Silver", Technique = "Base" });

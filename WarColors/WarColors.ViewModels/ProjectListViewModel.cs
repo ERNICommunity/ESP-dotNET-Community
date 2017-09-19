@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using WarColors.Core.Injection;
@@ -29,7 +30,7 @@ namespace WarColors.ViewModels
         public ProjectListViewModel(IFactory<IProjectRepository> projectFactoryRepository, IEventAggregator eventAggregator)
         {
             var sd = IoC.Get<ISeedDatabase>();
-            sd.SeedAsync(true).ContinueWith(result =>
+            sd.SeedAsync(false).ContinueWith(result =>
             {
                 this.projectFactoryRepository = projectFactoryRepository;
 
@@ -37,7 +38,11 @@ namespace WarColors.ViewModels
             });
 
             this.eventAggregator = eventAggregator;
+
+            // Commands
             ProjectTapped = new Command<ItemProjectModel>(OnProjectTapped);
+            AddProjectTapped = new Command(OnAddProjectTaped);
+            RemoveProjectTapped = new Command<string>(OnRemoveProjectTapped);
         }
 
         /// <summary>
@@ -60,9 +65,58 @@ namespace WarColors.ViewModels
         /// </value>
         public ICommand ProjectTapped { get; private set; }
 
+        /// <summary>
+        /// Gets the add project tapped.
+        /// </summary>
+        /// <value>
+        /// The add project tapped.
+        /// </value>
+        public ICommand AddProjectTapped { get; private set; }
+
+        /// <summary>
+        /// Gets the remove project tapped.
+        /// </summary>
+        /// <value>
+        /// The remove project tapped.
+        /// </value>
+        public ICommand RemoveProjectTapped { get; private set; }
+
         private void OnProjectTapped(ItemProjectModel item)
         {
             eventAggregator.PublishOnUIThreadAsync(new NavigationMessage(item.TargetType, item.Id));
+        }
+
+        private void OnAddProjectTaped()
+        {
+            // TODO - Add the PopUp View.
+        }
+
+        private void OnRemoveProjectTapped(string projectModel)
+        {
+            try
+            {
+                var project = Projects.FirstOrDefault(p => p.Title == projectModel);
+
+                // Remove from Database.
+                RemoveProjectFromDatabase(project.Id).ContinueWith(r => { });
+
+                Projects.Remove(project);
+
+                // Needed to update the Collection properly.
+                Projects = new ObservableCollection<ProjectModel>(Projects);
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine(e);
+            }
+        }
+
+        private async Task RemoveProjectFromDatabase(string id)
+        {
+            using (var projectRepository = projectFactoryRepository.Get())
+            {
+                await projectRepository.DeleteAsync(id);
+            }
         }
 
         private async Task LoadProjects()
@@ -76,15 +130,13 @@ namespace WarColors.ViewModels
                     var result = new List<ProjectModel>();
                     foreach (var p in items)
                     {
-                        var project = new ProjectModel(p.Title);
+                        var project = new ProjectModel(p.Id, p.Title);
                         
                         foreach (var m in p.Models)
                         {
                             project.Add(new ItemProjectModel { Id = m.Id, Title = m.Name, TargetType = typeof(MiniViewModel) });
                         }
                         result.Add(project);
-
-                        
                     }
 
                     Projects = new ObservableCollection<ProjectModel>(result);

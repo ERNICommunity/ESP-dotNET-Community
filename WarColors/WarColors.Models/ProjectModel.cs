@@ -12,10 +12,19 @@ namespace WarColors.Models
         /// Initializes a new instance of the <see cref="ProjectModel"/> class.
         /// </summary>
         /// <param name="projectTitle">The project title.</param>
-        public ProjectModel (string projectTitle)
+        public ProjectModel(string id, string projectTitle)
         {
+            Id = id;
             Title = projectTitle;
         }
+
+        /// <summary>
+        /// Gets or sets the identifier.
+        /// </summary>
+        /// <value>
+        /// The identifier.
+        /// </value>
+        public string Id { get; set; }
 
         /// <summary>
         /// Gets or sets the project title.

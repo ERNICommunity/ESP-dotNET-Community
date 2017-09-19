@@ -4,7 +4,8 @@
              xmlns:b="clr-namespace:Xamarin.Forms.BehaviorsPack;assembly=Xamarin.Forms.BehaviorsPack"
              xmlns:fv="clr-namespace:DLToolkit.Forms.Controls;assembly=DLToolkit.Forms.Controls.FlowListView"
              xmlns:cv="clr-namespace:WarColors.Views.Controls"  
-             x:Class="WarColors.Views.MiniView">
+             x:Class="WarColors.Views.MiniView"
+             x:Name="MiniViewPage">
 
     <ContentView.Padding>
         <OnPlatform x:TypeArguments="Thickness" iOS="0, 20, 0, 0" />
@@ -93,6 +94,11 @@
                                     <Image.Source>
                                         <OnPlatform x:TypeArguments="ImageSource" iOS="deleteImageWhite.png" Android="deleteImageWhite.png" WinPhone="Images/deleteImageWhite.png" />
                                     </Image.Source>
+                                    <Image.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding Path=BindingContext.RemovePieceTapped, 
+                                                                                Source={x:Reference MiniViewPage}}"
+                                                              CommandParameter="{Binding Path=Key}"/>
+                                    </Image.GestureRecognizers>
                                 </Image>
                             </Grid>
                         </StackLayout>
