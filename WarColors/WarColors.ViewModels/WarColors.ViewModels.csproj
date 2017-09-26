@@ -35,6 +35,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="AddEditProjectViewModel.cs" />
     <Compile Include="ColorsViewModel.cs" />
     <Compile Include="MainViewModel.cs" />
     <Compile Include="MasterViewModel.cs" />

@@ -87,7 +87,7 @@ namespace WarColors.UWP
         {
             Initialize();
 
-            Xamarin.Forms.Forms.Init(e);
+            Xamarin.Forms.Forms.Init(e, Rg.Plugins.Popup.Windows.Popup.GetExtraAssemblies());
 
             Window.Current.Content = new HostView();
             Window.Current.Activate();

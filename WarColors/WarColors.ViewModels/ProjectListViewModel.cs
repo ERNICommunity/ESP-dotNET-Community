@@ -88,7 +88,7 @@ namespace WarColors.ViewModels
 
         private void OnAddProjectTaped()
         {
-            // TODO - Add the PopUp View.
+            eventAggregator.PublishOnUIThreadAsync(new NavigationMessage(typeof(AddEditProjectViewModel)));
         }
 
         private void OnRemoveProjectTapped(string projectModel)

@@ -4,6 +4,7 @@
     "DLToolkit.Forms.Controls.FlowListView": "2.0.6",
     "MarcelloDB": "1.0.3",
     "Microsoft.NETCore.UniversalWindowsPlatform": "5.4.0",
+    "Rg.Plugins.Popup": "1.0.4",
     "Xamarin.Forms": "2.3.4.267"
   },
   "frameworks": {
