@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-using Xamarin.Forms;
+﻿using Xamarin.Forms;
 
 namespace PerformanceApp
 {
@@ -13,7 +8,7 @@ namespace PerformanceApp
         {
             InitializeComponent();
 
-            MainPage = new PerformanceApp.MainPage();
+            MainPage = new Views.InputView();
         }
 
         protected override void OnStart()

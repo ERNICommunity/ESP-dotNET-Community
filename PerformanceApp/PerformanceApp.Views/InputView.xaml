@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PerformanceApp.Views.InputView">
+    
+    <ContentPage.Padding>
+        <OnPlatform x:TypeArguments="Thickness" iOS="0, 20, 0, 0" />
+    </ContentPage.Padding>
+    
+    <StackLayout>
+        <Label Text="Insert Text" VerticalOptions="Center" HorizontalOptions="Center" Font="Bold, 22" />
+
+        <!-- Default Input -->
+        <StackLayout>
+            <Entry Placeholder="Default" Keyboard="Default" TextChanged="OnTextChanged"/>
+        </StackLayout>
+
+        <!-- Text Input -->
+        <StackLayout>
+            <Entry Placeholder="Text" Keyboard="Text" TextChanged="OnTextChanged"/>
+        </StackLayout>
+
+        <!-- Phone -->
+        <StackLayout>
+            <Entry Placeholder="Phone" Keyboard="Telephone" TextChanged="OnTextChanged"/>
+        </StackLayout>
+
+        <!-- Numeric -->
+        <StackLayout>
+            <Entry Placeholder="Numeric" Keyboard="Numeric" IsPassword="True" TextChanged="OnTextChanged"/>
+        </StackLayout>
+        
+        <!-- DatePicker -->
+        <StackLayout>
+            <DatePicker />
+        </StackLayout>
+
+        <!-- TimePicker -->
+        <StackLayout>
+            <TimePicker />
+        </StackLayout>
+
+        <StackLayout Padding="0, 25, 0, 0" >
+            <Label x:Name="inputLabel" Font="Bold, 22"/>
+        </StackLayout>
+    </StackLayout>
+</ContentPage>
