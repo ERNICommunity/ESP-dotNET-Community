@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PerformanceApp.Views.GridView">
+    <ContentPage.Padding>
+        <OnPlatform x:TypeArguments="Thickness" iOS="0, 20, 0, 0" />
+    </ContentPage.Padding>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="100" />
+            <RowDefinition Height="2*" />
+            <RowDefinition Height="1*" />
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <Label Text="Xamarin Grid Demo" Grid.Row="0" Grid.Column="0" FontSize="Large" HorizontalOptions="End" />
+
+        <Label Text="EPD" Grid.Row="0" Grid.Column="1" FontSize="Small" HorizontalOptions="End" VerticalOptions="End" />
+
+        <BoxView Color="Gray" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" />
+        <BoxView Color="Green" Grid.Row="2" Grid.Column="0" />
+        <BoxView Color="Red" Grid.Row="2" Grid.Column="1" Grid.RowSpan="2" />
+        <BoxView Color="Blue" Grid.Row="3" Grid.Column="0" Grid.RowSpan="2" />
+    </Grid>
+</ContentPage>

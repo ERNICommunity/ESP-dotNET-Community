@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PerformanceApp.Views.PickerView">
+    <ContentPage.Padding>
+        <OnPlatform x:TypeArguments="Thickness" iOS="0, 20, 0, 0" />
+    </ContentPage.Padding>
+
+    <StackLayout Padding="20" Spacing="50">
+        <Entry x:Name="entry" Placeholder="Type here..." />
+
+        <Picker Title="Keyboard Type" SelectedIndexChanged="OnPickerSelectedIndexChanged">
+            <Picker.Items>
+                <x:String>Default</x:String>
+                <x:String>Text</x:String>
+                <x:String>Chat</x:String>
+                <x:String>Email</x:String>
+                <x:String>Telephone</x:String>
+                <x:String>Numeric</x:String>
+            </Picker.Items>
+        </Picker>
+    </StackLayout>
+</ContentPage>
