@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PerformanceApp.Views.ListView">
+    <ContentPage.Padding>
+        <OnPlatform x:TypeArguments="Thickness" iOS="10, 20, 10, 0"  Android="10, 0" WinPhone="10, 0"/>
+    </ContentPage.Padding>
+
+    <StackLayout>
+        <ListView x:Name="listView">
+            <ListView.ItemsSource>
+                <x:Array Type="{x:Type Color}">
+                    <Color>Black</Color>
+                    <Color>Red</Color>
+                    <Color>Blue</Color>
+                    <Color>Yellow</Color>
+                    <Color>Green</Color>
+                </x:Array>
+            </ListView.ItemsSource>
+            <ListView.SelectedItem>
+                <Color>Yellow</Color>
+            </ListView.SelectedItem>
+        </ListView>
+    </StackLayout>
+</ContentPage>
