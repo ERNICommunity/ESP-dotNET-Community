@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:PerformanceApp.ViewModel;assembly=PerformanceApp.ViewModel"
+             x:Class="PerformanceApp.Views.PersonView">
+    <ContentPage.Padding>
+        <OnPlatform x:TypeArguments="Thickness" iOS="0, 20, 0, 0" />
+    </ContentPage.Padding>
+
+    <StackLayout>
+        <StackLayout.BindingContext>
+            <vm:PersonInfoViewModel />
+        </StackLayout.BindingContext>
+        <TableView x:Name="tableView" Intent="Form">
+            <TableRoot Title="Data Form">
+                <TableSection Title="Personal Information">
+                    <EntryCell Label="Name: " Text="{Binding PersonInfoModel.Name}" Placeholder="Name..." Keyboard="Text" />
+                    <EntryCell Label="Email: " Text="{Binding PersonInfoModel.Email}" Placeholder="Email..." Keyboard="Email" />
+                    <EntryCell Label="Phone: " Text="{Binding PersonInfoModel.Phone}" Placeholder="Phone..." Keyboard="Telephone" />
+                    <SwitchCell Text="Developer?" On="{Binding PersonInfoModel.IsDeveloper}" />
+                </TableSection>
+            </TableRoot>
+        </TableView>
+
+        <Label x:Name="summaryLabel" VerticalOptions="CenterAndExpand" Text="{Binding Info}" />
+        <Button Text="Submit" HorizontalOptions="Center" Command="{Binding UpdateInfo}"/>
+    </StackLayout>
+</ContentPage>
