@@ -8,7 +8,7 @@ namespace PerformanceApp
         {
             InitializeComponent();
 
-            MainPage = new Views.ListView();
+            MainPage = new Views.ColorView();
         }
 
         protected override void OnStart()
