@@ -8,7 +8,7 @@ namespace PerformanceApp
         {
             InitializeComponent();
 
-            MainPage = new Views.PersonView();
+            MainPage = new Views.MainView();
         }
 
         protected override void OnStart()

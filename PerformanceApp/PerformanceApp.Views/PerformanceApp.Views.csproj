@@ -47,6 +47,16 @@
     <Compile Include="ListView.xaml.cs">
       <DependentUpon>ListView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="MainView.xaml.cs">
+      <DependentUpon>MainView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MainViewDetail.xaml.cs">
+      <DependentUpon>MainViewDetail.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MainViewMaster.xaml.cs">
+      <DependentUpon>MainViewMaster.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MainViewMenuItem.cs" />
     <Compile Include="PersonView.xaml.cs">
       <DependentUpon>PersonView.xaml</DependentUpon>
     </Compile>
@@ -111,6 +121,24 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="PersonView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="MainView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="MainViewMaster.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="MainViewDetail.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>
