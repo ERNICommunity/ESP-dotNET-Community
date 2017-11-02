@@ -35,9 +35,9 @@
                 <Setter Property="TextColor" Value="Green"></Setter>
             </Style>
 
-            <Style x:Key="LabelGenericInheritStyle2" TargetType="Label" BasedOn="{StaticResource ButtonGenericInheritStyle}">
+            <!--<Style x:Key="LabelGenericInheritStyle2" TargetType="Label" BasedOn="{StaticResource ButtonGenericInheritStyle}">
                 <Setter Property="TextColor" Value="Black"></Setter>
-            </Style>
+            </Style>-->
 
         </ResourceDictionary>
     </ContentPage.Resources>
@@ -59,6 +59,7 @@
                    Style="{StaticResource LabelGenericInheritStyle}"/>
             <!--<Label Text="Welcome to Xamarin.Forms!"                   
                    Style="{StaticResource LabelGenericInheritStyle2}"/>-->
+            
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

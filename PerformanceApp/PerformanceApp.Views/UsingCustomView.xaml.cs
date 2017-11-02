@@ -10,9 +10,9 @@ using Xamarin.Forms.Xaml;
 namespace PerformanceApp.Views
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class CustomPage : ContentPage
+	public partial class UsingCustomView : ContentPage
 	{
-		public CustomPage ()
+		public UsingCustomView ()
 		{
 			InitializeComponent ();
 		}

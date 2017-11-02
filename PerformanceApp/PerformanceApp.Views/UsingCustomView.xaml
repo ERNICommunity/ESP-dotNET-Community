@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PerformanceApp.Views.UsingCustomView"
+             xmlns:custom="clr-namespace:PerformanceApp.Views">
+    <ContentPage.Content>
+        <StackLayout>
+            <custom:CustomView TitleText="BASKETBALL" BackgroundColor="AliceBlue" Image="basketball.png"/>
+            <custom:CustomView TitleText="FOOTBALL" BackgroundColor="Bisque" Image="football.png"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

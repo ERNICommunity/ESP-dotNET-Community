@@ -40,7 +40,7 @@ namespace PerformanceApp.Views
                     new MainViewMenuItem { Id = 4, Title = "Person Demo", TargetType = typeof(PersonView) },
                     new MainViewMenuItem { Id = 5, Title = "Picker Demo", TargetType = typeof(PickerView) },
                     new MainViewMenuItem { Id = 6, Title = "Style Demo", TargetType = typeof(StylePage) },
-                    new MainViewMenuItem { Id = 7, Title = "Custom Demo", TargetType = typeof(CustomPage) }
+                    new MainViewMenuItem { Id = 7, Title = "Custom Demo", TargetType = typeof(UsingCustomView) }
                 });
             }
             
