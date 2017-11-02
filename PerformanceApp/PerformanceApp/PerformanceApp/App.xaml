@@ -5,6 +5,8 @@
 	<Application.Resources>
 
 		<!-- Application resource dictionary -->
-
+        <ResourceDictionary>
+            
+        </ResourceDictionary>
 	</Application.Resources>
 </Application>

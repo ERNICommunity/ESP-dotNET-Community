@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PerformanceApp.Views.StylePage">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="ButtonCustomStyle" TargetType="Button">
+                <Setter Property="VerticalOptions" Value="CenterAndExpand"></Setter>
+                <Setter Property="HorizontalOptions" Value="CenterAndExpand"></Setter>
+                <Setter Property="TextColor" Value="Blue"></Setter>
+                <Setter Property="BackgroundColor" Value="Beige"></Setter>
+            </Style>
+
+            <Style x:Key="ButtonBaseStyle" TargetType="Button">
+                <Setter Property="VerticalOptions" Value="CenterAndExpand"></Setter>
+                <Setter Property="HorizontalOptions" Value="CenterAndExpand"></Setter>
+            </Style>
+
+            <Style x:Key="ButtonInheritStyle" TargetType="Button" BasedOn="{StaticResource ButtonBaseStyle}">
+                <Setter Property="TextColor" Value="Black"></Setter>
+                <Setter Property="BackgroundColor" Value="Blue"></Setter>
+            </Style>
+
+            <Style x:Key="GenericBaseStyle" TargetType="View">
+                <Setter Property="VerticalOptions" Value="CenterAndExpand"></Setter>
+                <Setter Property="HorizontalOptions" Value="CenterAndExpand"></Setter>
+                <Setter Property="BackgroundColor" Value="Orange"></Setter>
+            </Style>
+
+            <Style x:Key="ButtonGenericInheritStyle" TargetType="Button" BasedOn="{StaticResource GenericBaseStyle}">
+                <Setter Property="TextColor" Value="Yellow"></Setter>
+            </Style>
+
+            <Style x:Key="LabelGenericInheritStyle" TargetType="Label" BasedOn="{StaticResource GenericBaseStyle}">
+                <Setter Property="TextColor" Value="Green"></Setter>
+            </Style>
+
+            <Style x:Key="LabelGenericInheritStyle2" TargetType="Label" BasedOn="{StaticResource ButtonGenericInheritStyle}">
+                <Setter Property="TextColor" Value="Black"></Setter>
+            </Style>
+
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <StackLayout Orientation="Vertical">
+            <Button Text="Welcome to Xamarin.Forms!"                   
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand" TextColor="Red"/>
+            <Button Text="Welcome to Xamarin.Forms!"                   
+                   Style="{StaticResource ButtonCustomStyle}"/>
+            <Button Text="Welcome to Xamarin.Forms!"                   
+                   Style="{StaticResource ButtonInheritStyle}"/>
+
+            <Button Text="Welcome to Xamarin.Forms!"                   
+                   Style="{StaticResource ButtonGenericInheritStyle}"/>
+            <Label Text="Welcome to Xamarin.Forms!"                   
+                   Style="{StaticResource ButtonGenericInheritStyle}"/>
+            <Label Text="Welcome to Xamarin.Forms!"                   
+                   Style="{StaticResource LabelGenericInheritStyle}"/>
+            <!--<Label Text="Welcome to Xamarin.Forms!"                   
+                   Style="{StaticResource LabelGenericInheritStyle2}"/>-->
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
