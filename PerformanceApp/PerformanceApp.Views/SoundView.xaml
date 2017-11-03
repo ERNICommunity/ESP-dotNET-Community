@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:PerformanceApp.ViewModel;assembly=PerformanceApp.ViewModel"
+             x:Class="PerformanceApp.Views.SoundView">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="Welcome to the sound of music!" />
+            <StackLayout Orientation="Horizontal">
+                <StackLayout.BindingContext>
+                    <vm:SoundViewModel />
+                </StackLayout.BindingContext>
+                <Button Text="Sound 1" Margin="10" Command="{Binding PlaySound1}" />
+                <Button Text="Sound 2" Margin="10" Command="{Binding PlaySound2}" />
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

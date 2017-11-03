@@ -11,8 +11,8 @@
     <AssemblyName>PerformanceApp.UWP</AssemblyName>
     <DefaultLanguage>en-US</DefaultLanguage>
     <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
-    <TargetPlatformVersion>10.0.15063.0</TargetPlatformVersion>
-    <TargetPlatformMinVersion>10.0.15063.0</TargetPlatformMinVersion>
+    <TargetPlatformVersion>10.0.14393.0</TargetPlatformVersion>
+    <TargetPlatformMinVersion>10.0.10586.0</TargetPlatformMinVersion>
     <MinimumVisualStudioVersion>14</MinimumVisualStudioVersion>
     <EnableDotNetNativeCompatibleProfile>true</EnableDotNetNativeCompatibleProfile>
     <FileAlignment>512</FileAlignment>
@@ -100,6 +100,7 @@
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SoundPlayer.cs" />
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">
@@ -152,6 +153,10 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\PerformanceApp.ViewModel\PerformanceApp.ViewModel.csproj">
+      <Project>{8d6149f5-9c9f-49e0-815b-d18eedae5567}</Project>
+      <Name>PerformanceApp.ViewModel</Name>
+    </ProjectReference>
     <ProjectReference Include="..\PerformanceApp\PerformanceApp.csproj">
       <Project>{2faa4587-2e43-46e3-b215-df6591b38afc}</Project>
       <Name>PerformanceApp</Name>
