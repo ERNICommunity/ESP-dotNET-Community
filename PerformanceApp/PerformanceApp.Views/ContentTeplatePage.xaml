@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PerformanceApp.Views.ContentTeplatePage"
+             x:Name="root">
+    <ContentPage.Content>
+        <StackLayout >
+            <Label Text="{Binding PersonSelected.Name}"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand" />
+            
+            <ContentView >
+                <ContentView.ControlTemplate>
+                    <ControlTemplate>
+                        <StackLayout BackgroundColor="Red">
+                            <Button x:Name="personbutton" Text="hola" Command="{Binding BindingContext.ActionPerson, Source={x:Reference root}}"></Button>
+                            <Label Text="{Binding PersonSelected.Name, Source={x:Reference root}}"/>
+                        </StackLayout>
+                    </ControlTemplate>
+                </ContentView.ControlTemplate>
+            </ContentView>
+
+            <Button x:Name="b1" Text="{Binding Person1.Name}" Clicked="b1_Clicked" />
+            <Button x:Name="b2" Text="{Binding Person2.Name}" Clicked="b1_Clicked"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

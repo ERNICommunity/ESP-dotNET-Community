@@ -38,6 +38,9 @@
     <Compile Include="ColorView.xaml.cs">
       <DependentUpon>ColorView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ContentTeplatePage.xaml.cs">
+      <DependentUpon>ContentTeplatePage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="CustomView.xaml.cs">
       <DependentUpon>CustomView.xaml</DependentUpon>
     </Compile>
@@ -166,6 +169,12 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="UsingCustomView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="ContentTeplatePage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>
