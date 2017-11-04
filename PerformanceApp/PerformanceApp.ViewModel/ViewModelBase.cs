@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿using Caliburn.Micro;
+using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
 namespace PerformanceApp.ViewModel
@@ -9,6 +10,24 @@ namespace PerformanceApp.ViewModel
     /// <seealso cref="System.ComponentModel.INotifyPropertyChanged" />
     public class ViewModelBase : INotifyPropertyChanged
     {
+        private static IEventAggregator eventAggregator;
+        public static IEventAggregator EventAggregator
+        {
+            get
+            {
+                if (eventAggregator == null)
+                {
+                    eventAggregator = new EventAggregator();
+                }
+
+                return eventAggregator;
+            }
+        }
+
+        public ViewModelBase()
+        {
+        }
+
         /// <summary>
         /// Occurs when a property value changes.
         /// </summary>

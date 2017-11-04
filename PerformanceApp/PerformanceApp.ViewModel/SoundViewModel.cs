@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Caliburn.Micro;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,10 +9,12 @@ using Xamarin.Forms;
 
 namespace PerformanceApp.ViewModel
 {
-    public class SoundViewModel : ViewModelBase
+    public class SoundViewModel : ViewModelBase, IHandle<SoundMessage>
     {
         public SoundViewModel()
         {
+            EventAggregator.Subscribe(this);
+
             PlaySound1 = new Command(Sound1Clicked);
             PlaySound2 = new Command(Sound2Clicked);
         }
@@ -22,14 +25,25 @@ namespace PerformanceApp.ViewModel
         double[] frequencies = { 523.25, 622.25, 739.99, 880 };
         private void Sound1Clicked(object sender)
         {
-            // PerformanceApp.SoundPlayer.PlaySound(frequencies[0], 500);
-            PerformanceApp.SoundPlayer.PlaySound(frequencies[2], 500);
+            EventAggregator.Publish(new SoundMessage()
+            {
+                Frequency = frequencies[2],
+                Duration = 500
+            });
         }
 
         private void Sound2Clicked(object sender)
         {
-            //PerformanceApp.SoundPlayer.PlaySound(frequencies[1], 500);
-            PerformanceApp.SoundPlayer.PlaySound(frequencies[3], 500);
+            EventAggregator.Publish(new SoundMessage()
+            {
+                Frequency = frequencies[3],
+                Duration = 500
+            });
+        }
+
+        public void Handle(SoundMessage message)
+        {
+            PerformanceApp.SoundPlayer.PlaySound(message.Frequency, message.Duration);
         }
     }
 }

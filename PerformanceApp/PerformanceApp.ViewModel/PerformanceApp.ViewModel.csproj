@@ -35,9 +35,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Caliburn.Micro\EventAggregator.cs" />
+    <Compile Include="Caliburn.Micro\ExtensionMethods.cs" />
     <Compile Include="ColorViewModel.cs" />
     <Compile Include="PersonInfoViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SoundMessage.cs" />
     <Compile Include="SoundViewModel.cs" />
     <Compile Include="Sound\IPlatformSoundPlayer.cs" />
     <Compile Include="Sound\SoundPlayer.cs" />
